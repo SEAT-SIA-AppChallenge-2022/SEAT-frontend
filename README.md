@@ -1,4 +1,4 @@
-# Chores Frontend
+# SEAT Scoot Frontend
 
 The Frontend repository for Scoot hosted on Netlify. Built with Ionic, React, Redux, TypeScript, Tailwind CSS
 
