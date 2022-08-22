@@ -1,0 +1,7 @@
+{
+  "name": "scoot",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
