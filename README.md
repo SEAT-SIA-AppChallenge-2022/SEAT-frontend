@@ -4,7 +4,7 @@ The Frontend repository for Scoot hosted on Netlify. Built with Ionic, React, Re
 
 ## Documentation
 
-- [**Live Site**]()
+- [**Live Site**](https://seat-scoot.netlify.app/)
 - [**Figma Design**](https://www.figma.com/file/KquZZhJXFo5KU2P0QKsDtP/SIA-App-Challenge)
 
 ## Inital setup
