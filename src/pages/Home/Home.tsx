@@ -5,6 +5,7 @@ import { IonCard, IonCardSubtitle, IonButton, IonIcon } from '@ionic/react';
 import PageWithHeader from '@components/PageWithHeader';
 import BackgroundBlur from '@components/BackgroundBlur';
 import BackgroundImg from '@components/BackgroundImg';
+import OptionsDropdown from '@/components/OptionsDropdown';
 
 import rightCaret from '@/assets/icons/right-arrow-icon.svg';
 import dollarIcon from '@/assets/icons/dollar-icon.svg';
@@ -37,6 +38,12 @@ const Home: React.FC = () => {
       </div>
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
+          <div className='w-full px-10 pt-5'>
+            <h1 className='font-bold text-3xl'>Escape the Ordinary</h1>
+            <p className='text-base'>Recommendations curated for you</p>
+
+            <OptionsDropdown className='mt-8' />
+          </div>
           <IonCard className='font-helvetica relative'>
             <img src={lobster} />
             <div className='absolute bg-transparentGrey bottom-0 py-3 px-8 w-full'>
