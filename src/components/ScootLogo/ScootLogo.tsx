@@ -8,7 +8,7 @@ type props = {
 
 const ScootLogo = ({ className }: props) => {
   return (
-    <div className={`rounded-full bg-white w-16 h-16 flex justify-center items-center ${className}`}>
+    <div className={`rounded-full bg-white w-[63px] h-[63px] flex justify-center items-center ${className}`}>
       <IonIcon className='pl-1 w-16 h-16' icon={scoot} />
     </div>
   );

@@ -11,7 +11,7 @@ const PageWithGrid = ({ children }: Props) => {
   return (
     <IonPage>
       <AppToolbar />
-      <IonContent className='font-Inter'>
+      <IonContent className='font-helvetica'>
         <IonGrid className='w-screen'>{children}</IonGrid>
       </IonContent>
     </IonPage>
