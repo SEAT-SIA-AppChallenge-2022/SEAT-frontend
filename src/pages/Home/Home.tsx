@@ -6,6 +6,7 @@ import lobster from '@/assets/imgs/lobster.jpeg';
 
 const Home: React.FC = () => {
   return (
+    // test
     <PageWithGrid>
       <IonCard className='font-helvetica relative'>
         <img src={lobster} />
