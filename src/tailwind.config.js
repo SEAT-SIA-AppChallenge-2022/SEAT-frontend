@@ -7,7 +7,11 @@ module.exports = {
       inter: ['Inter', 'sans-serif'],
       helvetica: ['Helvetica Neue', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'water-texture': "url('../assets/imgs/background.jpeg')",
+      },
+    },
     colors: {
       black: '#000',
       white: '#ffffff',
