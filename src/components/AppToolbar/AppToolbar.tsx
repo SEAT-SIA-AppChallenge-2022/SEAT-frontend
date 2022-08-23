@@ -6,7 +6,7 @@ const AppToolbar = () => {
   return (
     <IonHeader>
       <IonToolbar color='primary' mode='ios' className='h-16 flex'>
-        <ScootLogo className='ml-2' />
+        <ScootLogo className='ml-4' />
       </IonToolbar>
     </IonHeader>
   );
