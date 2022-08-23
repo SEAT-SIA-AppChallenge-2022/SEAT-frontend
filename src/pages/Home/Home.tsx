@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageWithGrid from '@components/PageWithGrid';
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
+import { IonCard, IonCardSubtitle, IonButton } from '@ionic/react';
 import lobster from '@/assets/imgs/lobster.jpeg';
 
 const Home: React.FC = () => {
