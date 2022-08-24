@@ -13,6 +13,16 @@ export const severity = {
   INFO: 'info',
 };
 
+export type Attraction = 'All' | 'Activities' | 'Accommodations' | 'Dining' | 'Tours';
+
+export const attractions = {
+  all: 'All' as Attraction,
+  activities: 'Activities' as Attraction,
+  accommodations: 'Accommodations' as Attraction,
+  dining: 'Dining' as Attraction,
+  tours: 'Tours' as Attraction,
+};
+
 export const navigationStates: NavigationState = {
   pickAttractions: {
     icon1: cartIconFilled,
