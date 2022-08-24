@@ -10,7 +10,7 @@ import Button from '@components/Button';
 
 import lobster from '@/assets/imgs/lobster.jpeg';
 import { navigationStates, Attraction, attractions } from '@/constants/constants';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonFooter, IonHeader } from '@ionic/react';
+import { IonFooter } from '@ionic/react';
 
 type AttractionOption = {
   id: number;
