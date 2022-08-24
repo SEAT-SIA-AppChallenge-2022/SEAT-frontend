@@ -56,7 +56,7 @@ const AddOns: React.FC = () => {
           <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
         </div>
       </div>
-      <IonFooter className='px-4 flex items-center z-50 fixed bottom-0 h-20 bg-transparentGrey'>
+      <IonFooter className='px-4 flex items-center z-50 fixed bottom-0 h-24 bg-transparentGrey'>
         <Button className='w-full'>Itinerary Overview</Button>
       </IonFooter>
     </PageWithHeader>
