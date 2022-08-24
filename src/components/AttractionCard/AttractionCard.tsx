@@ -2,14 +2,14 @@ import React from 'react';
 
 import { IonCard, IonCardSubtitle, IonButton } from '@ionic/react';
 
-type props = {
+type Props = {
   className?: string;
   title: string;
   imgUrl: string;
   price?: string;
 };
 
-const AttractionCard = ({ className, title, imgUrl, price }: props) => {
+const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
   return (
     <IonCard className={`font-helvetica relative ${className}`}>
       <img src={imgUrl} />

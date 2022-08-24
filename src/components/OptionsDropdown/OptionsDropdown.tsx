@@ -6,11 +6,11 @@ import { IonIcon } from '@ionic/react';
 
 import downArrow from '@/assets/icons/arrow-down.svg';
 
-type props = {
+type Props = {
   className?: string;
 };
 
-const OptionsDropdown = ({ className }: props) => {
+const OptionsDropdown = ({ className }: Props) => {
   return (
     <Menu as='div' className={`relative inline-block text-left w-full ${className}`}>
       <div>
