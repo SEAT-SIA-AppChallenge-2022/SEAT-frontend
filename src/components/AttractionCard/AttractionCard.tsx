@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IonCard, IonCardSubtitle, IonButton } from '@ionic/react';
+import { IonCard, IonCardSubtitle } from '@ionic/react';
 
 type Props = {
   className?: string;
@@ -21,11 +21,7 @@ const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
           <div className='flex items-center'>
             <p className='text-white font-helvetica font-semibold'>{price && `From SGD ${price}`}</p>
           </div>
-          <div>
-            <IonButton mode='ios' className='text-xs font-semibold w-full'>
-              View
-            </IonButton>
-          </div>
+          <div></div>
         </div>
       </div>
     </IonCard>
