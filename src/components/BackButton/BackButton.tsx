@@ -12,9 +12,11 @@ type Props = {
 const BackButton = ({ backRoute, className }: Props) => {
   const history = useHistory();
   return (
-    <div onClick={() => history.push(backRoute)} className={`flex cursor-pointer ${className}`}>
-      <IonIcon className='text-3xl' icon={leftArrow} />
-      <p className='pt-1 font-medium'>Back</p>
+    <div className={`flex cursor-pointer ${className}`}>
+      <div className='flex' onClick={() => history.push(backRoute)}>
+        <IonIcon className='text-3xl' icon={leftArrow} />
+        <p className='pt-1 font-medium'>Back</p>
+      </div>
     </div>
   );
 };
