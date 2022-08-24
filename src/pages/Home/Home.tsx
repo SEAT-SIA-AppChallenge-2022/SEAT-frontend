@@ -25,6 +25,7 @@ const Home: React.FC = () => {
 
             <OptionsDropdown className='mt-8' />
           </div>
+
           <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
         </div>
       </div>

@@ -19,7 +19,7 @@ const AttractionCard = ({ className, title, imgUrl, price }: props) => {
         </IonCardSubtitle>
         <div className='grid grid-cols-2 gap-4'>
           <div className='flex items-center'>
-            <p className='text-white font-helvetica font-semibold'>From SGD {price}</p>
+            <p className='text-white font-helvetica font-semibold'>{price && `From SGD ${price}`}</p>
           </div>
           <div>
             <IonButton mode='ios' className='text-xs font-semibold w-full'>
