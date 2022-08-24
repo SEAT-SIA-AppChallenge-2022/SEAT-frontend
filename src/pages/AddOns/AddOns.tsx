@@ -6,9 +6,11 @@ import TopNavigationBar from '@components/TopNavigationBar';
 import AttractionCard from '@components/AttractionCard';
 import BackButton from '@components/BackButton';
 import Option from '@components/OptionsDropdown/Option';
+import Button from '@components/Button';
 
 import lobster from '@/assets/imgs/lobster.jpeg';
 import { navigationStates, Attraction, attractions } from '@/constants/constants';
+import { IonFooter } from '@ionic/react';
 
 type AttractionOption = {
   id: number;
@@ -22,14 +24,13 @@ const attractionTypes: AttractionOption[] = [
   { id: 5, option: attractions.tours },
 ];
 
-const Home: React.FC = () => {
+const AddOns: React.FC = () => {
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
 
   return (
     <PageWithHeader>
       <TopNavigationBar state={navigationStates.pickAttractions} />
-
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
           <BackButton backRoute='' className='pt-5 pl-8' />
@@ -49,10 +50,17 @@ const Home: React.FC = () => {
           </div>
 
           <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+          <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+          <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+          <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+          <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
         </div>
       </div>
+      <IonFooter className='px-4 flex items-center z-50 fixed bottom-0 h-20 bg-transparentGrey'>
+        <Button className='w-full'>Itinerary Overview</Button>
+      </IonFooter>
     </PageWithHeader>
   );
 };
 
-export default Home;
+export default AddOns;
