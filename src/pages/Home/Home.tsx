@@ -1,25 +1,23 @@
 import React from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
-import BackgroundBlur from '@components/BackgroundBlur';
-import BackgroundImg from '@components/BackgroundImg';
 import OptionsDropdown from '@components/OptionsDropdown';
 import TopNavigationBar from '@components/TopNavigationBar';
 import AttractionCard from '@components/AttractionCard';
+import BackButton from '@components/BackButton';
 
 import lobster from '@/assets/imgs/lobster.jpeg';
+import { navigationStates } from '@/constants/constants';
 
 const Home: React.FC = () => {
   return (
     <PageWithHeader>
-      <BackgroundBlur />
-      <BackgroundImg />
-
-      <TopNavigationBar />
+      <TopNavigationBar state={navigationStates.pickAttractions} />
 
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
-          <div className='w-full px-10 pt-5'>
+          <BackButton backRoute='' className='pt-5 pl-8' />
+          <div className='w-full px-10'>
             <h1 className='font-bold text-3xl'>Escape the Ordinary</h1>
             <p className='text-base'>Recommendations curated for you</p>
 
