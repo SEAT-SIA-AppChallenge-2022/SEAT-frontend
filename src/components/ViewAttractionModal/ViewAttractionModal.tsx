@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DatetimeChangeEventDetail, IonDatetimeCustomEvent } from '@ionic/core';
 import ClickAwayListener from 'react-click-away-listener';
+import { checkmarkCircle } from 'ionicons/icons';
 
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
@@ -13,6 +14,7 @@ import { TRIP_REF } from '@/constants/dummyData';
 import { ChosenAttraction } from '@/types/attractions/attractions';
 import DateTime from '@/types/DateTime/DateTime';
 import { timezones } from '@/constants/constants';
+import starIcon from '@/assets/icons/star.svg';
 
 const ViewAttractionModal = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const ViewAttractionModal = () => {
   const [chosenDate, setChosenDate] = useState<DateTime>(DateTime.newDateTimeFromDate(new Date()));
 
   if (!currentAttraction) return <></>;
-  const { id, imgUrl, category, title, description, price } = currentAttraction;
+  const { id, imgUrl, category, title, description, price, rating } = currentAttraction;
   const chosenAttraction = chosenAttractions?.find(attraction => attraction.id === id && attraction.tripRef === TRIP_REF);
   const isAttractionChosen = chosenAttraction ? true : false;
 
@@ -51,6 +53,18 @@ const ViewAttractionModal = () => {
       <ClickAwayListener onClickAway={handleClickAway}>
         <IonCard className='relative z-50 h-[550px] overflow-y-hidden'>
           <img className='object-cover w-full h-44' src={imgUrl} />
+
+          {/* Checkmark */}
+          {isAttractionChosen && (
+            <IonIcon className='absolute top-0 left-0 mt-1.5 ml-1.5 py-0.5 text-3xl text-[#4BB543]' icon={checkmarkCircle} />
+          )}
+
+          {/* Rating */}
+          <div className='rounded-lg absolute flex top-0 right-0 mt-2 mr-2 py-0.5 pl-2 pr-1 bg-[#ffffffbf]'>
+            <p className='text-black mt-0.5 text-xl'>{rating}</p>
+            <IonIcon className='text-3xl' icon={starIcon} />
+          </div>
+
           <IonCardHeader>
             <IonCardSubtitle mode='ios'>{category}</IonCardSubtitle>
             {price && <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>}
