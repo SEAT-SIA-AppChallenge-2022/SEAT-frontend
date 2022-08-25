@@ -9,25 +9,12 @@ import Button from '@components/Button';
 import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
 import { dummyAttractions, TRIP_REF } from '@/constants/dummyData';
 import Routes from '@/utilities/routes';
-import { navigationStates, attractions } from '@/constants/constants';
-import { AttractionCategory } from '@/types/attractions/attractions';
+import { navigationStates, attractions, attractionTypes } from '@/constants/constants';
+import { AttractionOption } from '@/types/attractions/attractions';
 
 import { IonFooter } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-
-type AttractionOption = {
-  id: number;
-  option: AttractionCategory;
-};
-
-const attractionTypes: AttractionOption[] = [
-  { id: 1, option: attractions.all },
-  { id: 2, option: attractions.activities },
-  { id: 3, option: attractions.accommodations },
-  { id: 4, option: attractions.dining },
-  { id: 5, option: attractions.tours },
-];
 
 const AddOns: React.FC = () => {
   const dispatch = useDispatch();

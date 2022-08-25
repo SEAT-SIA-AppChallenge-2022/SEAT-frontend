@@ -15,3 +15,8 @@ export interface ChosenAttraction extends Attraction {
   tripRef: string;
   chosenDate: DateTime;
 }
+
+export type AttractionOption = {
+  id: number;
+  option: AttractionCategory;
+};
