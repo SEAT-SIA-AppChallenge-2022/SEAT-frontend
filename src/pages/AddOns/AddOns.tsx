@@ -4,10 +4,10 @@ import PageWithHeader from '@components/PageWithHeader';
 import OptionsDropdown from '@components/OptionsDropdown';
 import TopNavigationBar from '@components/TopNavigationBar';
 import AttractionCard from '@components/AttractionCard';
-import BackButton from '@components/BackButton';
 import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
 import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
+import { TRIP_REF } from '@/constants/dummyData';
 
 import { navigationStates, attractions } from '@/constants/constants';
 import { dummyAttractions } from '@/constants/dummyData';
@@ -45,8 +45,8 @@ const AddOns: React.FC = () => {
         <TopNavigationBar state={navigationStates.pickAttractions} />
         <div className='grid grid-cols-1 h-full w-screen'>
           <div className='z-20'>
-            <BackButton backRoute='' className='pt-5 pl-8' />
-            <div className='w-full px-10'>
+            <div className='w-full px-10 pt-2'>
+              <p className='text-base font-semibold'>Booking Ref: {TRIP_REF}</p>
               <h1 className='font-bold text-3xl'>Escape the Ordinary</h1>
               <p className='text-base'>Recommendations curated for you</p>
 

@@ -1,7 +1,7 @@
 import { Attraction } from '@/types/attractions/attractions';
 import { attractions } from '@/constants/constants';
 
-export const TRIP_REF = 'ABCD';
+export const TRIP_REF = '6SMFOA';
 
 export const dummyAttractions: Attraction[] = [
   {
