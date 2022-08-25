@@ -7,13 +7,14 @@ import AttractionCard from '@components/AttractionCard';
 import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
 import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
-import { TRIP_REF } from '@/constants/dummyData';
-
+import { dummyAttractions, TRIP_REF } from '@/constants/dummyData';
+import Routes from '@/utilities/routes';
 import { navigationStates, attractions } from '@/constants/constants';
-import { dummyAttractions } from '@/constants/dummyData';
 import { AttractionCategory } from '@/types/attractions/attractions';
+
 import { IonFooter } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 type AttractionOption = {
   id: number;
@@ -30,6 +31,8 @@ const attractionTypes: AttractionOption[] = [
 
 const AddOns: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
   const allAttractions = useSelector(getAllAttractions);
@@ -78,7 +81,7 @@ const AddOns: React.FC = () => {
           </div>
         </div>
         <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
-          <Button badge={chosenAttractions?.length} className='w-full'>
+          <Button onClick={() => history.push(Routes.overview)} badge={chosenAttractions?.length} className='w-full'>
             Itinerary Overview
           </Button>
         </IonFooter>

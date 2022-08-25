@@ -5,7 +5,8 @@ import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Routes from '@/utilities/routes';
 
-import AddOns from '@/pages/AddOns';
+import AddOns from '@pages/AddOns';
+import Overview from '@pages/Overview';
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
             <Redirect to={Routes.addOns} />
           </Route>
           <Route exact path={Routes.addOns} component={AddOns} />
+          <Route exact path={Routes.overview} component={Overview} />
           <Route exact path='*'>
             <Redirect to={Routes.base} />
           </Route>
