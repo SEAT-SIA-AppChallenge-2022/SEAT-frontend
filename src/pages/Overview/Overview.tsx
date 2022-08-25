@@ -16,7 +16,6 @@ import { ChosenAttraction } from '@/types/attractions/attractions';
 import DateTime from '@/types/DateTime/DateTime';
 
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonFooter } from '@ionic/react';
-
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 
@@ -81,7 +80,7 @@ const Overview = () => {
             <AttractionCardChip isFlight={true} date={flightDayDate()} price='400' title='' id={0} />
           </OverviewCard>
 
-          {/* All Booked Attractions */}
+          {/* All Booked */}
           {sameDayAttractions}
 
           <div className='w-full p-16'></div>

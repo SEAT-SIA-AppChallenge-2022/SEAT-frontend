@@ -3,6 +3,7 @@ const Routes = {
   addOns: '/addOns',
   overview: '/overview',
   purchase: '/purchase',
+  review: '/review',
   test: '/test',
 };
 
