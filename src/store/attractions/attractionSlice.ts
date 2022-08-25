@@ -5,11 +5,13 @@ import { Attraction } from '@/types/attractions/attractions';
 interface AttractionState {
   allAttractions: Attraction[];
   chosenAttractions: Attraction[];
+  currentAttractionView: number | undefined;
 }
 
 const initialState: AttractionState = {
   allAttractions: [],
   chosenAttractions: [],
+  currentAttractionView: undefined,
 };
 
 export const attractionSlice = createSlice({
@@ -26,10 +28,13 @@ export const attractionSlice = createSlice({
     deleteAttraction: (state, action: PayloadAction<number>) => {
       state.chosenAttractions = [...state.chosenAttractions].filter(attraction => attraction.id !== action.payload);
     },
+    setCurrentAttractionView: (state, action: PayloadAction<number>) => {
+      state.currentAttractionView = action.payload;
+    },
   },
 });
 
-export const { setAllAttractions } = attractionSlice.actions;
+export const { setAllAttractions, setCurrentAttractionView, addAttraction, deleteAttraction } = attractionSlice.actions;
 
 export const getAllAttractions = (state: RootState): Attraction[] | null => {
   return state.attraction.allAttractions;
@@ -37,6 +42,12 @@ export const getAllAttractions = (state: RootState): Attraction[] | null => {
 
 export const getChosenAttractions = (state: RootState): Attraction[] | null => {
   return state.attraction.chosenAttractions;
+};
+
+export const getCurrentAttractionView = (state: RootState): Attraction | undefined => {
+  const id = state.attraction.currentAttractionView;
+  if (!id) return undefined;
+  return state.attraction.allAttractions.find(attraction => attraction.id === id);
 };
 
 export default attractionSlice.reducer;

@@ -4,7 +4,8 @@ export type Attraction = {
   id: number;
   category: AttractionCategory;
   rating: number;
-  descripton: string;
+  description: string;
+  imgUrl: string;
   price?: string;
   title: string;
 };

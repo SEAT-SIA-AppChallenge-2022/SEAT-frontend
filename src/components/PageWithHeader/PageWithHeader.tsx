@@ -3,7 +3,7 @@ import React from 'react';
 import AppToolbar from '@components/AppToolbar';
 import BackgroundBlur from '@components/BackgroundBlur';
 import BackgroundImg from '@components/BackgroundImg';
-// import ViewAttractionModal from '@components/ViewAttractionModal';
+import ViewAttractionModal from '@components/ViewAttractionModal';
 
 import { IonPage, IonContent } from '@ionic/react';
 
@@ -14,7 +14,7 @@ type Props = {
 const PageWithHeader = ({ children }: Props) => {
   return (
     <IonPage>
-      {/* <ViewAttractionModal /> */}
+      <ViewAttractionModal />
       <AppToolbar />
       <IonContent className='font-helvetica'>
         <BackgroundBlur />

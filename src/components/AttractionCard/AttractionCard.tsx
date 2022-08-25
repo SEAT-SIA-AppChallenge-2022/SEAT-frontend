@@ -5,15 +5,17 @@ import { useDispatch } from 'react-redux';
 
 import Button from '@components/Button';
 import { showAttractionModal } from '@/store/ui/uiSlice';
+import { setCurrentAttractionView } from '@/store/attractions/attractionSlice';
 
 type Props = {
   className?: string;
   title: string;
   imgUrl: string;
   price?: string;
+  id: number;
 };
 
-const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
+const AttractionCard = ({ className, title, imgUrl, price, id }: Props) => {
   const dispatch = useDispatch();
   return (
     <IonCard className={`font-helvetica relative ${className}`}>
@@ -29,6 +31,7 @@ const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
           <div>
             <Button
               onClick={() => {
+                dispatch(setCurrentAttractionView(id));
                 dispatch(showAttractionModal());
               }}
               className='w-full'

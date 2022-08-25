@@ -50,11 +50,11 @@ const AddOns: React.FC = () => {
                   ))}
               </OptionsDropdown>
             </div>
-            <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            <AttractionCard id={1} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            <AttractionCard id={2} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            <AttractionCard id={3} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            <AttractionCard id={4} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            <AttractionCard id={5} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
             <div className='w-full p-16'></div>
           </div>
         </div>
