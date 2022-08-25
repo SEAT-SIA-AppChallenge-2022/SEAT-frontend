@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
 import OptionsDropdown from '@components/OptionsDropdown';
@@ -7,11 +7,13 @@ import AttractionCard from '@components/AttractionCard';
 import BackButton from '@components/BackButton';
 import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
+import { getAllAttractions, setAllAttractions } from '@/store/attractions/attractionSlice';
 
-import lobster from '@/assets/imgs/lobster.jpeg';
 import { navigationStates, attractions } from '@/constants/constants';
+import { dummyAttractions } from '@/constants/dummyData';
 import { AttractionCategory } from '@/types/attractions/attractions';
 import { IonFooter } from '@ionic/react';
+import { useSelector, useDispatch } from 'react-redux';
 
 type AttractionOption = {
   id: number;
@@ -26,8 +28,14 @@ const attractionTypes: AttractionOption[] = [
 ];
 
 const AddOns: React.FC = () => {
+  const dispatch = useDispatch();
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
+  const allAttractions = useSelector(getAllAttractions);
+
+  useEffect(() => {
+    dispatch(setAllAttractions(dummyAttractions));
+  });
 
   return (
     <>
@@ -50,11 +58,17 @@ const AddOns: React.FC = () => {
                   ))}
               </OptionsDropdown>
             </div>
-            <AttractionCard id={1} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard id={2} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard id={3} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard id={4} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
-            <AttractionCard id={5} className='mt-8' title='Something cool!' imgUrl={lobster} price='13.50' />
+            {allAttractions &&
+              allAttractions.map(attraction => (
+                <AttractionCard
+                  key={attraction.id}
+                  id={attraction.id}
+                  className='mt-8'
+                  title={attraction.title}
+                  imgUrl={attraction.imgUrl}
+                  price={attraction.price}
+                />
+              ))}
             <div className='w-full p-16'></div>
           </div>
         </div>

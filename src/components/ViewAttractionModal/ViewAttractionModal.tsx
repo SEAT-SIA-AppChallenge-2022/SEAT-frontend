@@ -27,18 +27,20 @@ const ViewAttractionModal = () => {
   };
 
   return isOpen ? (
-    <div className={`absolute z-40 w-screen h-screen bg-[#000000b3]`}>
+    <div className={`absolute flex justify-center items-center overflow-y-auto z-40 w-screen h-screen bg-[#000000b3]`}>
       <ClickAwayListener onClickAway={handleClickAway}>
-        <IonCard className='mt-12 z-50'>
-          <img src={imgUrl} />
+        <IonCard className='relative z-50 h-[550px] overflow-y-hidden'>
+          <img className='object-cover w-full h-44' src={imgUrl} />
           <IonCardHeader>
             <IonCardSubtitle mode='ios'>{category}</IonCardSubtitle>
+            <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>
             <IonCardTitle mode='ios'>{title}</IonCardTitle>
           </IonCardHeader>
-          <IonCardContent mode='ios'>
+          <IonCardContent className='text-justify h-40 overflow-y-scroll' mode='ios'>
             {description}
-            <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>
-            <div className='flex w-full justify-end mt-5'>
+          </IonCardContent>
+          <div className='w-full p-5'>
+            <div className='flex w-full justify-end'>
               <DateTimePicker />
             </div>
             <div className='flex w-full justify-end'>
@@ -46,7 +48,7 @@ const ViewAttractionModal = () => {
                 Add
               </Button>
             </div>
-          </IonCardContent>
+          </div>
         </IonCard>
       </ClickAwayListener>
     </div>

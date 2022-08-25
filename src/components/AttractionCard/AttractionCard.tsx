@@ -18,8 +18,8 @@ type Props = {
 const AttractionCard = ({ className, title, imgUrl, price, id }: Props) => {
   const dispatch = useDispatch();
   return (
-    <IonCard className={`font-helvetica relative ${className}`}>
-      <img src={imgUrl} />
+    <IonCard className={`h-56 font-helvetica relative ${className}`}>
+      <img className='object-cover h-full w-full' src={imgUrl} />
       <div className='absolute bg-transparentGrey bottom-0 py-3 px-8 w-full'>
         <IonCardSubtitle mode='md' className='text-white font-helvetica text-sm font-semibold'>
           {title}
