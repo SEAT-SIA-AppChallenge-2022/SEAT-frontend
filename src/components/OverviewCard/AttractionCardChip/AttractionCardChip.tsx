@@ -14,9 +14,10 @@ type Props = {
   title: string;
   price?: string;
   id: number;
+  isReview?: boolean;
 };
 
-const AttractionCardChip = ({ isFlight, date, title, price, id }: Props) => {
+const AttractionCardChip = ({ isFlight, date, title, price, id, isReview = false }: Props) => {
   const dispatch = useDispatch();
 
   const onHandleDelete = () => {
@@ -33,12 +34,14 @@ const AttractionCardChip = ({ isFlight, date, title, price, id }: Props) => {
         {price && <IonCardSubtitle mode='ios'>SGD {price}</IonCardSubtitle>}
         {isFlight && <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>}
       </div>
-      <div
-        onClick={isFlight ? () => '' : onHandleDelete}
-        className={`flex col-span-1 rounded-r-lg items-center justify-center ${isFlight ? 'bg-[#4BB543]' : 'bg-[#eb445a]'}`}
-      >
-        <IonIcon icon={isFlight ? airplane : trash} className='text-black text-2xl' />
-      </div>
+      {!isReview && (
+        <div
+          onClick={isFlight ? () => '' : onHandleDelete}
+          className={`flex col-span-1 rounded-r-lg items-center justify-center ${isFlight ? 'bg-[#4BB543]' : 'bg-[#eb445a]'}`}
+        >
+          <IonIcon icon={isFlight ? airplane : trash} className='text-black text-2xl' />
+        </div>
+      )}
     </div>
   );
 };

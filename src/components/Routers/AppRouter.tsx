@@ -8,6 +8,7 @@ import Routes from '@/utilities/routes';
 import AddOns from '@pages/AddOns';
 import Overview from '@pages/Overview';
 import Purchase from '@pages/Purchase';
+import Review from '@pages/Review';
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           <Route exact path={Routes.addOns} component={AddOns} />
           <Route exact path={Routes.overview} component={Overview} />
           <Route exact path={Routes.purchase} component={Purchase} />
+          <Route exact path={Routes.review} component={Review} />
           <Route exact path='*'>
             <Redirect to={Routes.base} />
           </Route>
