@@ -1,11 +1,19 @@
 import React from 'react';
 import { IonDatetime, IonDatetimeButton, IonModal } from '@ionic/react';
-const DateTimePicker = () => {
+import { DatetimeChangeEventDetail, IonDatetimeCustomEvent } from '@ionic/core';
+
+type Props = {
+  disabled?: boolean;
+  value: string;
+  onChange: (e: IonDatetimeCustomEvent<DatetimeChangeEventDetail>) => void;
+};
+
+const DateTimePicker = ({ disabled = false, value, onChange }: Props) => {
   return (
     <>
-      <IonDatetimeButton color='secondary' datetime='datetime'></IonDatetimeButton>
+      <IonDatetimeButton disabled={disabled} color='secondary' datetime='datetime'></IonDatetimeButton>
       <IonModal keepContentsMounted={true}>
-        <IonDatetime color='secondary' id='datetime'></IonDatetime>
+        <IonDatetime value={value} onIonChange={event => onChange(event)} color='secondary' id='datetime'></IonDatetime>
       </IonModal>
     </>
   );

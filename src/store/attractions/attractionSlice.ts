@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/store/store';
-import { Attraction } from '@/types/attractions/attractions';
+import { Attraction, ChosenAttraction } from '@/types/attractions/attractions';
 
 interface AttractionState {
   allAttractions: Attraction[];
-  chosenAttractions: Attraction[];
+  chosenAttractions: ChosenAttraction[];
   currentAttractionView: number | undefined;
 }
 
@@ -22,7 +22,7 @@ export const attractionSlice = createSlice({
     setAllAttractions: (state, action: PayloadAction<Attraction[]>) => {
       state.allAttractions = action.payload;
     },
-    addAttraction: (state, action: PayloadAction<Attraction>) => {
+    addAttraction: (state, action: PayloadAction<ChosenAttraction>) => {
       const exists = state.chosenAttractions.find(
         attraction => attraction.id === action.payload.id && attraction.tripRef === action.payload.tripRef,
       );
@@ -44,7 +44,7 @@ export const getAllAttractions = (state: RootState): Attraction[] | null => {
   return state.attraction.allAttractions;
 };
 
-export const getChosenAttractions = (state: RootState): Attraction[] | null => {
+export const getChosenAttractions = (state: RootState): ChosenAttraction[] | null => {
   return state.attraction.chosenAttractions;
 };
 

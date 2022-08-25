@@ -1,30 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { DatetimeChangeEventDetail, IonDatetimeCustomEvent } from '@ionic/core';
 import ClickAwayListener from 'react-click-away-listener';
 
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
 import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
 import { getCurrentAttractionView, addAttraction, getChosenAttractions } from '@/store/attractions/attractionSlice';
+import { TRIP_REF } from '@/constants/dummyData';
+import { ChosenAttraction } from '@/types/attractions/attractions';
 
 const ViewAttractionModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(getIsAttractionModalOpen);
   const currentAttraction = useSelector(getCurrentAttractionView);
   const chosenAttractions = useSelector(getChosenAttractions);
+
+  const [chosenDate, setChosenDate] = useState<string>(new Date().toISOString());
+
   if (!currentAttraction) return <></>;
-  const { id, imgUrl, category, title, description, price, tripRef } = currentAttraction;
-  const isAttractionChosen = chosenAttractions?.find(attraction => attraction.id === id && attraction.tripRef === tripRef) ? true : false;
+  const { id, imgUrl, category, title, description, price } = currentAttraction;
+  const chosenAttraction = chosenAttractions?.find(attraction => attraction.id === id && attraction.tripRef === TRIP_REF);
+  const isAttractionChosen = chosenAttraction ? true : false;
 
   const handleAddClick = () => {
-    dispatch(addAttraction(currentAttraction));
+    const newBooking: ChosenAttraction = { ...currentAttraction, tripRef: TRIP_REF, chosenDate: chosenDate };
+    dispatch(addAttraction(newBooking));
     dispatch(hideAttractionModal());
   };
 
   const handleClickAway = () => {
     dispatch(hideAttractionModal());
+  };
+
+  const handleDateChange = (e: IonDatetimeCustomEvent<DatetimeChangeEventDetail>) => {
+    const chosenDate: string = e.target.value as string;
+    setChosenDate(chosenDate);
   };
 
   return isOpen ? (
@@ -42,7 +55,7 @@ const ViewAttractionModal = () => {
           </IonCardContent>
           <div className='w-full p-5'>
             <div className='flex w-full justify-end'>
-              <DateTimePicker />
+              <DateTimePicker value={chosenDate} onChange={handleDateChange} disabled={isAttractionChosen} />
             </div>
             <div className='flex w-full justify-end'>
               <Button disabled={isAttractionChosen} onClick={handleAddClick} className='w-32'>
