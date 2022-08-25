@@ -1,15 +1,19 @@
 import React from 'react';
 
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
+import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
 
 import lobster from '@/assets/imgs/lobster.jpeg';
 
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
-
 const ViewAttractionModal = () => {
+  const dispatch = useDispatch();
+  const isOpen = useSelector(getIsAttractionModalOpen);
   return (
-    <div className='absolute z-50 w-screen h-screen bg-[#000000b3]'>
+    <div onClick={() => dispatch(hideAttractionModal())} className={isOpen ? `absolute z-50 w-screen h-screen bg-[#000000b3]` : `hidden`}>
       <IonCard className='mt-12'>
         <img src={lobster} />
         <IonCardHeader>
@@ -25,7 +29,9 @@ const ViewAttractionModal = () => {
             <DateTimePicker />
           </div>
           <div className='flex w-full justify-end'>
-            <Button className='w-32'>Add</Button>
+            <Button onClick={() => dispatch(hideAttractionModal())} className='w-32'>
+              Add
+            </Button>
           </div>
         </IonCardContent>
       </IonCard>

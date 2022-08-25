@@ -1,8 +1,10 @@
 import React from 'react';
 
-import Button from '@components/Button';
-
 import { IonCard, IonCardSubtitle } from '@ionic/react';
+import { useDispatch } from 'react-redux';
+
+import Button from '@components/Button';
+import { showAttractionModal } from '@/store/ui/uiSlice';
 
 type Props = {
   className?: string;
@@ -12,6 +14,7 @@ type Props = {
 };
 
 const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
+  const dispatch = useDispatch();
   return (
     <IonCard className={`font-helvetica relative ${className}`}>
       <img src={imgUrl} />
@@ -24,7 +27,14 @@ const AttractionCard = ({ className, title, imgUrl, price }: Props) => {
             <p className='text-white font-helvetica font-semibold'>{price && `From SGD ${price}`}</p>
           </div>
           <div>
-            <Button className='w-full'>View</Button>
+            <Button
+              onClick={() => {
+                dispatch(showAttractionModal());
+              }}
+              className='w-full'
+            >
+              View
+            </Button>
           </div>
         </div>
       </div>
