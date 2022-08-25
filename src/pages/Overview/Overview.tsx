@@ -76,10 +76,12 @@ const Overview = () => {
             </IonCardHeader>
           </IonCard>
 
+          {/* Hardcoded Flight Details */}
           <OverviewCard date={flightDayDate()}>
             <AttractionCardChip isFlight={true} date={flightDayDate()} price='400' title='' id={0} />
           </OverviewCard>
 
+          {/* All Booked Attractions */}
           {sameDayAttractions}
 
           <div className='w-full p-16'></div>
