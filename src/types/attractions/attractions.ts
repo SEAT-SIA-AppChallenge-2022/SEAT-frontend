@@ -1,4 +1,5 @@
 export type AttractionCategory = 'All' | 'Activities' | 'Accommodations' | 'Dining' | 'Tours';
+import DateTime from '@/types/DateTime/DateTime';
 
 export interface Attraction {
   id: number;
@@ -12,5 +13,5 @@ export interface Attraction {
 
 export interface ChosenAttraction extends Attraction {
   tripRef: string;
-  chosenDate: string;
+  chosenDate: DateTime;
 }

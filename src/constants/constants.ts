@@ -5,6 +5,7 @@ import dollarIconUnFilled from '@/assets/icons/dollar-icon-unfilled.svg';
 import shopIconUnFilled from '@/assets/icons/shop-icon-unfilled.svg';
 import { NavigationState } from '@components/TopNavigationBar/TopNavigationBar';
 import { AttractionCategory } from '@/types/attractions/attractions';
+import { Timezone } from '@/types/DateTime/DateTime';
 
 export const severity = {
   SUCCESS: 'success',
@@ -12,6 +13,10 @@ export const severity = {
   ERROR: 'error',
   WARNING: 'warning',
   INFO: 'info',
+};
+
+export const timezones = {
+  sg: 'Asia/Singapore' as Timezone,
 };
 
 export const attractions = {

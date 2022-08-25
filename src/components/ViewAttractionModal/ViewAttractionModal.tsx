@@ -11,6 +11,8 @@ import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlic
 import { getCurrentAttractionView, addAttraction, getChosenAttractions } from '@/store/attractions/attractionSlice';
 import { TRIP_REF } from '@/constants/dummyData';
 import { ChosenAttraction } from '@/types/attractions/attractions';
+import DateTime from '@/types/DateTime/DateTime';
+import { timezones } from '@/constants/constants';
 
 const ViewAttractionModal = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const ViewAttractionModal = () => {
   const currentAttraction = useSelector(getCurrentAttractionView);
   const chosenAttractions = useSelector(getChosenAttractions);
 
-  const [chosenDate, setChosenDate] = useState<string>(new Date().toISOString());
+  const [chosenDate, setChosenDate] = useState<DateTime>(DateTime.newDateTimeFromDate(new Date()));
 
   if (!currentAttraction) return <></>;
   const { id, imgUrl, category, title, description, price } = currentAttraction;
@@ -37,7 +39,7 @@ const ViewAttractionModal = () => {
 
   const handleDateChange = (e: IonDatetimeCustomEvent<DatetimeChangeEventDetail>) => {
     const chosenDate: string = e.target.value as string;
-    setChosenDate(chosenDate);
+    setChosenDate(DateTime.newDateTimeFromDate(new Date(chosenDate)));
   };
 
   return isOpen ? (
@@ -47,7 +49,7 @@ const ViewAttractionModal = () => {
           <img className='object-cover w-full h-44' src={imgUrl} />
           <IonCardHeader>
             <IonCardSubtitle mode='ios'>{category}</IonCardSubtitle>
-            <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>
+            {price && <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>}
             <IonCardTitle mode='ios'>{title}</IonCardTitle>
           </IonCardHeader>
           <IonCardContent className='text-justify h-40 overflow-y-scroll' mode='ios'>
@@ -55,7 +57,15 @@ const ViewAttractionModal = () => {
           </IonCardContent>
           <div className='w-full p-5'>
             <div className='flex w-full justify-end'>
-              <DateTimePicker value={chosenDate} onChange={handleDateChange} disabled={isAttractionChosen} />
+              <DateTimePicker
+                value={
+                  chosenAttraction
+                    ? chosenAttraction.chosenDate.toTimezoneDate(timezones.sg).format()
+                    : chosenDate.toTimezoneDate(timezones.sg).format()
+                }
+                onChange={handleDateChange}
+                disabled={isAttractionChosen}
+              />
             </div>
             <div className='flex w-full justify-end'>
               <Button disabled={isAttractionChosen} onClick={handleAddClick} className='w-32'>
