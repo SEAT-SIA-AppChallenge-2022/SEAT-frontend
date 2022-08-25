@@ -71,6 +71,7 @@ const AddOns: React.FC = () => {
                     title={attraction.title}
                     imgUrl={attraction.imgUrl}
                     price={attraction.price}
+                    rating={attraction.rating}
                   />
                 ))}
             <div className='w-full p-16'></div>

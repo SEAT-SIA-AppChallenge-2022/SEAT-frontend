@@ -17,7 +17,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 2,
     category: attractions.activities,
-    rating: 4,
+    rating: 2.5,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     imgUrl:
@@ -28,7 +28,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 3,
     category: attractions.dining,
-    rating: 4,
+    rating: 1,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     imgUrl:
@@ -39,7 +39,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 4,
     category: attractions.tours,
-    rating: 4,
+    rating: 2.5,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     imgUrl: 'https://www.rd.com/wp-content/uploads/2021/01/GettyImages-1175550351.jpg',
@@ -49,7 +49,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 5,
     category: attractions.accommodations,
-    rating: 4,
+    rating: 5,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     imgUrl:
@@ -60,7 +60,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 6,
     category: attractions.accommodations,
-    rating: 4,
+    rating: 2,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     imgUrl: 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
