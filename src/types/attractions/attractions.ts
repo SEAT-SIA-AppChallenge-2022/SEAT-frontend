@@ -8,4 +8,5 @@ export type Attraction = {
   imgUrl: string;
   price?: string;
   title: string;
+  tripRef: string;
 };

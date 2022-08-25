@@ -6,13 +6,20 @@ type Props = {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  badge?: number;
+  disabled?: boolean;
 };
 
-const Button = ({ className, children, onClick }: Props) => {
+const Button = ({ className, children, onClick, badge, disabled = false }: Props) => {
   return (
-    <IonButton onClick={onClick} mode='ios' className={`text-xs font-semibold ${className}`}>
-      {children}
-    </IonButton>
+    <div className={`relative ${className}`}>
+      {badge !== 0 && badge && (
+        <div className='absolute z-10 right-[-10px] flex items-center justify-center h-7 w-7 bg-black text-white rounded-full'>{badge}</div>
+      )}
+      <IonButton disabled={disabled} onClick={onClick} mode='ios' className={`text-xs font-semibold w-full`}>
+        {children}
+      </IonButton>
+    </div>
   );
 };
 

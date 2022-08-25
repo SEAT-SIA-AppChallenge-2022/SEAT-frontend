@@ -23,6 +23,10 @@ export const attractionSlice = createSlice({
       state.allAttractions = action.payload;
     },
     addAttraction: (state, action: PayloadAction<Attraction>) => {
+      const exists = state.chosenAttractions.find(
+        attraction => attraction.id === action.payload.id && attraction.tripRef === action.payload.tripRef,
+      );
+      if (exists) return;
       state.chosenAttractions = [...state.chosenAttractions, action.payload];
     },
     deleteAttraction: (state, action: PayloadAction<number>) => {

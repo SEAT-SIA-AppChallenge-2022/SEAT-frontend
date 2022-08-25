@@ -7,7 +7,7 @@ import AttractionCard from '@components/AttractionCard';
 import BackButton from '@components/BackButton';
 import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
-import { getAllAttractions, setAllAttractions } from '@/store/attractions/attractionSlice';
+import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
 
 import { navigationStates, attractions } from '@/constants/constants';
 import { dummyAttractions } from '@/constants/dummyData';
@@ -19,6 +19,7 @@ type AttractionOption = {
   id: number;
   option: AttractionCategory;
 };
+
 const attractionTypes: AttractionOption[] = [
   { id: 1, option: attractions.all },
   { id: 2, option: attractions.activities },
@@ -32,6 +33,7 @@ const AddOns: React.FC = () => {
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
   const allAttractions = useSelector(getAllAttractions);
+  const chosenAttractions = useSelector(getChosenAttractions);
 
   useEffect(() => {
     dispatch(setAllAttractions(dummyAttractions));
@@ -75,7 +77,9 @@ const AddOns: React.FC = () => {
           </div>
         </div>
         <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
-          <Button className='w-full'>Itinerary Overview</Button>
+          <Button badge={chosenAttractions?.length} className='w-full'>
+            Itinerary Overview
+          </Button>
         </IonFooter>
       </PageWithHeader>
     </>

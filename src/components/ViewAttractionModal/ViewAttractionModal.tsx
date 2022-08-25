@@ -7,15 +7,16 @@ import ClickAwayListener from 'react-click-away-listener';
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
 import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
-import { getCurrentAttractionView, addAttraction } from '@/store/attractions/attractionSlice';
+import { getCurrentAttractionView, addAttraction, getChosenAttractions } from '@/store/attractions/attractionSlice';
 
 const ViewAttractionModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(getIsAttractionModalOpen);
   const currentAttraction = useSelector(getCurrentAttractionView);
+  const chosenAttractions = useSelector(getChosenAttractions);
   if (!currentAttraction) return <></>;
-
-  const { imgUrl, category, title, description, price } = currentAttraction;
+  const { id, imgUrl, category, title, description, price, tripRef } = currentAttraction;
+  const isAttractionChosen = chosenAttractions?.find(attraction => attraction.id === id && attraction.tripRef === tripRef) ? true : false;
 
   const handleAddClick = () => {
     dispatch(addAttraction(currentAttraction));
@@ -44,8 +45,8 @@ const ViewAttractionModal = () => {
               <DateTimePicker />
             </div>
             <div className='flex w-full justify-end'>
-              <Button onClick={handleAddClick} className='w-32'>
-                Add
+              <Button disabled={isAttractionChosen} onClick={handleAddClick} className='w-32'>
+                {isAttractionChosen ? 'Added' : 'Add'}
               </Button>
             </div>
           </div>
