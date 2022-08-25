@@ -8,15 +8,21 @@ import Button from '@components/Button';
 import Routes from '@/utilities/routes';
 import { TRIP_REF } from '@/constants/dummyData';
 import { navigationStates } from '@/constants/constants';
+import { getChosenAttractions } from '@/store/attractions/attractionSlice';
 
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonFooter } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonFooter } from '@ionic/react';
+
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const Overview = () => {
   const history = useHistory();
+  const chosenAttractions = useSelector(getChosenAttractions);
+  const totalPrice = chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0);
+
   return (
     <PageWithHeader>
-      <TopNavigationBar state={navigationStates.pickAttractions} />
+      <TopNavigationBar state={navigationStates.reviewCart} />
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
           <BackButton className='pl-8 pt-2' backRoute={Routes.addOns} />
@@ -27,106 +33,18 @@ const Overview = () => {
 
           <IonCard>
             <IonCardHeader>
-              <IonCardSubtitle mode='ios'>28 Jul</IonCardSubtitle>
+              <IonCardSubtitle mode='ios'>Total Price</IonCardSubtitle>
               <IonCardTitle mode='ios' className='text-2xl'>
-                THU
+                SGD {totalPrice}
               </IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2 mb-3'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Flight
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-                <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>
-              </div>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Activity 1
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-              </div>
-            </IonCardContent>
           </IonCard>
-
-          <IonCard>
-            <IonCardHeader>
-              <IonCardSubtitle mode='ios'>28 Jul</IonCardSubtitle>
-              <IonCardTitle mode='ios' className='text-2xl'>
-                THU
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2 mb-3'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Flight
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-                <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>
-              </div>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Activity 1
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-              </div>
-            </IonCardContent>
-          </IonCard>
-
-          <IonCard>
-            <IonCardHeader>
-              <IonCardSubtitle mode='ios'>28 Jul</IonCardSubtitle>
-              <IonCardTitle mode='ios' className='text-2xl'>
-                THU
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2 mb-3'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Flight
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-                <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>
-              </div>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Activity 1
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-              </div>
-            </IonCardContent>
-          </IonCard>
-
-          <IonCard>
-            <IonCardHeader>
-              <IonCardSubtitle mode='ios'>28 Jul</IonCardSubtitle>
-              <IonCardTitle mode='ios' className='text-2xl'>
-                THU
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2 mb-3'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Flight
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-                <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>
-              </div>
-              <div className='bg-[#F0F0F0] w-full rounded-lg p-2'>
-                <IonCardTitle mode='ios' className='text-xl'>
-                  Activity 1
-                </IonCardTitle>
-                <IonCardSubtitle mode='ios'>28 Jul 0800</IonCardSubtitle>
-              </div>
-            </IonCardContent>
-          </IonCard>
-          <div className='w-full p-16'></div>
         </div>
       </div>
 
       <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
-        <Button onClick={() => history.push(Routes.review)} className='w-full'>
-          Review
+        <Button onClick={() => history.push(Routes.purchase)} className='w-full'>
+          Purchase
         </Button>
       </IonFooter>
     </PageWithHeader>

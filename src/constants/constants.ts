@@ -38,17 +38,17 @@ export const timezones = {
 export const navigationStates: NavigationState = {
   pickAttractions: {
     icon1: cartIconFilled,
-    icon2: dollarIconUnFilled,
-    icon3: shopIconUnFilled,
+    icon2: shopIconUnFilled,
+    icon3: dollarIconUnFilled,
   },
   reviewCart: {
     icon1: cartIconFilled,
-    icon2: dollarIconFilled,
-    icon3: shopIconUnFilled,
+    icon2: shopIconFilled,
+    icon3: dollarIconUnFilled,
   },
   completePayment: {
     icon1: cartIconFilled,
-    icon2: dollarIconFilled,
-    icon3: shopIconFilled,
+    icon2: shopIconFilled,
+    icon3: dollarIconFilled,
   },
 };
