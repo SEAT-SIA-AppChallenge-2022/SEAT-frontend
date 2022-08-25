@@ -8,7 +8,7 @@ import ClickAwayListener from 'react-click-away-listener';
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
 import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
-import { getCurrentAttractionView, addAttraction, getChosenAttractions } from '@/store/attractions/attractionSlice';
+import { getCurrentAttractionView, addAttraction, getChosenAttractions, deleteAttraction } from '@/store/attractions/attractionSlice';
 import { TRIP_REF } from '@/constants/dummyData';
 import { ChosenAttraction } from '@/types/attractions/attractions';
 import DateTime from '@/types/DateTime/DateTime';
@@ -31,6 +31,10 @@ const ViewAttractionModal = () => {
     const newBooking: ChosenAttraction = { ...currentAttraction, tripRef: TRIP_REF, chosenDate: chosenDate };
     dispatch(addAttraction(newBooking));
     dispatch(hideAttractionModal());
+  };
+
+  const handleRemove = () => {
+    dispatch(deleteAttraction(id));
   };
 
   const handleClickAway = () => {
@@ -68,8 +72,12 @@ const ViewAttractionModal = () => {
               />
             </div>
             <div className='flex w-full justify-end'>
-              <Button disabled={isAttractionChosen} onClick={handleAddClick} className='w-32'>
-                {isAttractionChosen ? 'Added' : 'Add'}
+              <Button
+                color={isAttractionChosen ? 'danger' : 'primary'}
+                onClick={isAttractionChosen ? handleRemove : handleAddClick}
+                className='w-32'
+              >
+                {isAttractionChosen ? 'Remove' : 'Add'}
               </Button>
             </div>
           </div>
