@@ -9,12 +9,13 @@ import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
 
 import lobster from '@/assets/imgs/lobster.jpeg';
-import { navigationStates, Attraction, attractions } from '@/constants/constants';
+import { navigationStates, attractions } from '@/constants/constants';
+import { AttractionCategory } from '@/types/attractions/attractions';
 import { IonFooter } from '@ionic/react';
 
 type AttractionOption = {
   id: number;
-  option: Attraction;
+  option: AttractionCategory;
 };
 const attractionTypes: AttractionOption[] = [
   { id: 1, option: attractions.all },
