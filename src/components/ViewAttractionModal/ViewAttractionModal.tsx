@@ -7,7 +7,7 @@ import ClickAwayListener from 'react-click-away-listener';
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
 import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
-import { getCurrentAttractionView } from '@/store/attractions/attractionSlice';
+import { getCurrentAttractionView, addAttraction } from '@/store/attractions/attractionSlice';
 
 const ViewAttractionModal = () => {
   const dispatch = useDispatch();
@@ -15,10 +15,10 @@ const ViewAttractionModal = () => {
   const currentAttraction = useSelector(getCurrentAttractionView);
   if (!currentAttraction) return <></>;
 
-  const { id, imgUrl, category, title, description, price } = currentAttraction;
+  const { imgUrl, category, title, description, price } = currentAttraction;
 
   const handleAddClick = () => {
-    console.log(id);
+    dispatch(addAttraction(currentAttraction));
     dispatch(hideAttractionModal());
   };
 

@@ -59,16 +59,18 @@ const AddOns: React.FC = () => {
               </OptionsDropdown>
             </div>
             {allAttractions &&
-              allAttractions.map(attraction => (
-                <AttractionCard
-                  key={attraction.id}
-                  id={attraction.id}
-                  className='mt-8'
-                  title={attraction.title}
-                  imgUrl={attraction.imgUrl}
-                  price={attraction.price}
-                />
-              ))}
+              allAttractions
+                .filter(attraction => (selected.option !== attractions.all ? attraction.category === selected.option : true))
+                .map(attraction => (
+                  <AttractionCard
+                    key={attraction.id}
+                    id={attraction.id}
+                    className='mt-8'
+                    title={attraction.title}
+                    imgUrl={attraction.imgUrl}
+                    price={attraction.price}
+                  />
+                ))}
             <div className='w-full p-16'></div>
           </div>
         </div>
