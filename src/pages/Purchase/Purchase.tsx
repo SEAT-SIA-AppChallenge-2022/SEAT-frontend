@@ -42,6 +42,8 @@ const Purchase = () => {
               <PaymentInput />
             </IonCardContent>
           </IonCard>
+
+          <div className='w-full p-16'></div>
         </div>
       </div>
       <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
