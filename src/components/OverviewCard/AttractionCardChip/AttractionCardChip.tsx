@@ -12,7 +12,7 @@ type Props = {
   isFlight: boolean;
   date: DateTime;
   title: string;
-  price: string;
+  price?: string;
   id: number;
 };
 
@@ -30,7 +30,7 @@ const AttractionCardChip = ({ isFlight, date, title, price, id }: Props) => {
           {isFlight ? 'Flight' : title}
         </IonCardTitle>
         <IonCardSubtitle mode='ios'>{date.toTimezoneDate(timezones.sg).format('DD MMM HHmm')}</IonCardSubtitle>
-        <IonCardSubtitle mode='ios'>SGD {price}</IonCardSubtitle>
+        {price && <IonCardSubtitle mode='ios'>SGD {price}</IonCardSubtitle>}
         {isFlight && <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>}
       </div>
       <div
