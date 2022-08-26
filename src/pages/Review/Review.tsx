@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
-import BackButton from '@/components/BackButton';
 import TopNavigationBar from '@components/TopNavigationBar';
 import Button from '@components/Button';
 import OverviewCard from '@components/OverviewCard';
@@ -17,18 +16,26 @@ import DateTime from '@/types/DateTime/DateTime';
 
 import { IonFooter } from '@ionic/react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 const Review = () => {
+  const history = useHistory();
   const chosenAttractions = useSelector(getChosenAttractions) ?? [];
   const chosenAttractionsCopy = [...chosenAttractions];
   chosenAttractionsCopy.sort((x, y) => new Date(x.chosenDate.toString()).getTime() - new Date(y.chosenDate.toString()).getTime());
+
+  useEffect(() => {
+    if (chosenAttractions.length === 0) {
+      history.push(Routes.addOns);
+    }
+  }, []);
 
   const flightDayDate = (): DateTime => {
     if (chosenAttractionsCopy.length === 0) return DateTime.newDateTimeFromDate(new Date());
     const flightDay = DateTime.newDateTimeFromUTCString(chosenAttractionsCopy[0].chosenDate.toString());
 
     return DateTime.newDateTimeFromUTCString(
-      flightDay.toTimezoneDate(timezones.sg).subtract(1, 'days').format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z',
+      flightDay.toTimezoneDate(timezones.sg).subtract(2, 'days').format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z',
     );
   };
 
@@ -57,7 +64,6 @@ const Review = () => {
       <TopNavigationBar state={navigationStates.completePayment} />
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
-          <BackButton className='pl-8 pt-2' backRoute={Routes.addOns} />
           <div className='w-full px-10 pt-2'>
             <p className='text-base font-semibold'>Booking Ref: {TRIP_REF}</p>
             <h1 className='font-bold text-3xl'>Your itinerary at a glance</h1>
@@ -76,7 +82,7 @@ const Review = () => {
       </div>
 
       <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
-        <Button disabled={chosenAttractions.length === 0} onClick={() => location.reload()} className='w-full'>
+        <Button onClick={() => location.reload()} className='w-full'>
           Restart Demo
         </Button>
       </IonFooter>

@@ -31,7 +31,7 @@ const Overview = () => {
     const flightDay = DateTime.newDateTimeFromUTCString(chosenAttractionsCopy[0].chosenDate.toString());
 
     return DateTime.newDateTimeFromUTCString(
-      flightDay.toTimezoneDate(timezones.sg).subtract(1, 'days').format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z',
+      flightDay.toTimezoneDate(timezones.sg).subtract(2, 'days').format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z',
     );
   };
 
