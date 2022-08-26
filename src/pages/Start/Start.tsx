@@ -5,10 +5,13 @@ import PreferenceMeter from '@components/PreferenceMeter';
 import LabelTitle from '@components/LabelTitle';
 import Button from '@components/Button';
 
-// import Routes from '@/utilities/routes';
+import Routes from '@/utilities/routes';
 import { TRIP_REF } from '@/constants/dummyData';
 
+import { useHistory } from 'react-router';
+
 const Start = () => {
+  const history = useHistory();
   return (
     <PageWithHeader>
       <div className='grid grid-cols-1 h-full w-screen'>
@@ -30,7 +33,9 @@ const Start = () => {
           </div>
 
           <div className='w-full flex justify-end'>
-            <Button className='w-32 mr-5'>Personalise</Button>
+            <Button onClick={() => history.push(Routes.addOns)} className='w-32 mr-5'>
+              Personalise
+            </Button>
           </div>
         </div>
       </div>
