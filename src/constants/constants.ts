@@ -26,9 +26,8 @@ export const attractions = {
 export const attractionTypes: AttractionOption[] = [
   { id: 1, option: attractions.all },
   { id: 2, option: attractions.activities },
-  { id: 3, option: attractions.accommodations },
-  { id: 4, option: attractions.dining },
-  { id: 5, option: attractions.tours },
+  { id: 3, option: attractions.dining },
+  { id: 4, option: attractions.tours },
 ];
 
 export const timezones = {

@@ -30,9 +30,9 @@ const AttractionCardChip = ({ isFlight, date, title, price, id, isReview = false
         <IonCardTitle mode='ios' className='text-xl'>
           {isFlight ? 'Flight' : title}
         </IonCardTitle>
-        <IonCardSubtitle mode='ios'>{date.toTimezoneDate(timezones.sg).format('DD MMM HHmm')}</IonCardSubtitle>
+        <IonCardSubtitle mode='ios'>{date.toTimezoneDate(timezones.sg).format('DD MMM HH:mm')}</IonCardSubtitle>
         {price && <IonCardSubtitle mode='ios'>SGD {price}</IonCardSubtitle>}
-        {isFlight && <IonCardSubtitle mode='ios'>SIN --&gt; LDN (LHR)</IonCardSubtitle>}
+        {isFlight && <IonCardSubtitle mode='ios'>LDN (LHR) --&gt; SG (SIN)</IonCardSubtitle>}
       </div>
       {!isReview && (
         <div
