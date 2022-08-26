@@ -1,7 +1,55 @@
 import { Attraction } from '@/types/attractions/attractions';
 import { attractions } from '@/constants/constants';
+import { User } from '@/types/User/type';
 
 export const TRIP_REF = '6SMFOA';
+export const users: User[] = [
+  {
+    id: '2',
+    name: 'Luxurious & Indoorsy User',
+    inOutScore: 1,
+    leisureThrillScore: 3,
+    cheapExpScore: 5,
+    email: 'LuxuriousIndoor@gmail.com',
+    password: 'asdasd',
+  },
+  {
+    id: '72',
+    name: 'Luxurious & Outdoorsy User',
+    inOutScore: 1,
+    leisureThrillScore: 3,
+    cheapExpScore: 5,
+    email: 'LuxuriousOutdoor@gmail.com',
+    password: 'asdasd',
+  },
+  {
+    id: '18',
+    name: 'Neutral User',
+    inOutScore: 3,
+    leisureThrillScore: 3,
+    cheapExpScore: 3,
+    email: 'Neutral@gmail.com',
+    password: 'asdasd',
+  },
+  {
+    id: '80',
+    name: 'Conservative & Outdoorsy User',
+    inOutScore: 5,
+    leisureThrillScore: 3,
+    cheapExpScore: 1,
+    email: 'ConservativeOutdoor@gmail.com',
+    password: 'asdasd',
+  },
+  {
+    id: '10',
+    name: 'Conservative & Indoorsy User',
+    inOutScore: 1,
+    leisureThrillScore: 3,
+    cheapExpScore: 1,
+    email: 'ConservativeIndoor@gmail.com',
+    password: 'asdasd',
+  },
+];
 
 export const dummyAttractions: Attraction[] = [
   {
