@@ -6,8 +6,9 @@ import LabelTitle from '@components/LabelTitle';
 import Button from '@components/Button';
 
 import Routes from '@/utilities/routes';
-import { TRIP_REF, users } from '@/constants/dummyData';
-import { setAllUsers } from '@/store/authentication/authSlice';
+import { TRIP_REF, users, GUEST } from '@/constants/dummyData';
+import { setAllUsers, setCurrentUser } from '@/store/authentication/authSlice';
+import { User } from '@/types/User/type';
 
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -35,9 +36,13 @@ const Start = () => {
   };
 
   const handlePersonalise = () => {
-    console.log(outdoorIndoorScore);
-    console.log(leisureThrillScore);
-    console.log(affordableLuxuryScore);
+    const newGuest: User = {
+      ...GUEST,
+      inOutScore: outdoorIndoorScore,
+      leisureThrillScore: leisureThrillScore,
+      cheapExpScore: affordableLuxuryScore,
+    };
+    dispatch(setCurrentUser(newGuest));
     history.push(Routes.addOns);
   };
 
