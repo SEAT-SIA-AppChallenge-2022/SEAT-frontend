@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from './ui/uiSlice';
 import attractionReducer from './attractions/attractionSlice';
+import authReducer from './authentication/authSlice';
 
 export const store = configureStore({
   reducer: {
     ui: uiReducer,
     attraction: attractionReducer,
+    auth: authReducer,
   },
 });
 

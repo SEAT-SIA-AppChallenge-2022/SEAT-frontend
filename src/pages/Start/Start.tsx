@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
 import PreferenceMeter from '@components/PreferenceMeter';
@@ -6,12 +6,20 @@ import LabelTitle from '@components/LabelTitle';
 import Button from '@components/Button';
 
 import Routes from '@/utilities/routes';
-import { TRIP_REF } from '@/constants/dummyData';
+import { TRIP_REF, users } from '@/constants/dummyData';
+import { setAllUsers } from '@/store/authentication/authSlice';
 
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 const Start = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setAllUsers(users));
+  }, []);
+
   const [outdoorIndoorScore, setOutdoorIndoorScore] = useState<number>(3);
   const [leisureThrillScore, setLeisureThrillScore] = useState<number>(3);
   const [affordableLuxuryScore, setAffordableLuxuryScore] = useState<number>(3);

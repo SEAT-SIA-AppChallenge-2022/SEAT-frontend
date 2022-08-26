@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import OptionsDropdown from '@components/OptionsDropdown';
 import Option from '@components/OptionsDropdown/Option';
 
+import Routes from '@/utilities/routes';
 import { getIsLoginModalOpen, hideLoginModal } from '@/store/ui/uiSlice';
+import { getAllUsers, setCurrentUser } from '@/store/authentication/authSlice';
+import { User } from '@/types/User/type';
+import { users, GUEST } from '@/constants/dummyData';
 
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
 import ClickAwayListener from 'react-click-away-listener';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 const LoginModal = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const isOpen = useSelector(getIsLoginModalOpen);
+  const allUsers = useSelector(getAllUsers);
+
+  const [selectedUser, setSelectedUser] = useState<User>(users[0]);
+
   const handleClickAway = () => {
+    dispatch(setCurrentUser(GUEST));
     dispatch(hideLoginModal());
   };
+
+  const handleSignIn = () => {
+    dispatch(setCurrentUser(selectedUser));
+    dispatch(hideLoginModal());
+    history.push(Routes.addOns);
+  };
+
   return isOpen ? (
     <div className={`absolute flex justify-center items-center overflow-y-auto z-40 w-screen h-screen bg-[#000000b3]`}>
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -27,8 +46,15 @@ const LoginModal = () => {
             </IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <OptionsDropdown className='mb-7' currentState='User 1'>
-              <Option onClick={() => ''}>User 1</Option>
+            <OptionsDropdown className='mb-7' currentState={selectedUser.name}>
+              {allUsers &&
+                allUsers
+                  .filter(user => user.id !== selectedUser?.id)
+                  .map(user => (
+                    <Option key={user.id} onClick={() => setSelectedUser(user)}>
+                      {user.name}
+                    </Option>
+                  ))}
             </OptionsDropdown>
             <div className='mb-3'>
               <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
@@ -37,6 +63,7 @@ const LoginModal = () => {
               <div className='mt-1'>
                 <input
                   readOnly
+                  value={selectedUser ? selectedUser.email : ''}
                   id='email'
                   name='email'
                   type='email'
@@ -54,6 +81,7 @@ const LoginModal = () => {
               <div className='mt-1'>
                 <input
                   readOnly
+                  value={selectedUser ? selectedUser.password : ''}
                   id='password'
                   name='password'
                   type='password'
@@ -68,6 +96,7 @@ const LoginModal = () => {
               <div className='flex items-center'>
                 <input
                   checked
+                  readOnly
                   id='remember-me'
                   name='remember-me'
                   type='checkbox'
@@ -83,6 +112,7 @@ const LoginModal = () => {
               <button
                 type='submit'
                 className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-yellow focus:outline-none'
+                onClick={handleSignIn}
               >
                 Sign in
               </button>
@@ -92,6 +122,7 @@ const LoginModal = () => {
               <button
                 type='submit'
                 className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#FFF7A6] focus:outline-none'
+                onClick={handleClickAway}
               >
                 Continue as Guest
               </button>

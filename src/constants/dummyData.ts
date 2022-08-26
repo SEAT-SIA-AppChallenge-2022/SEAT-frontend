@@ -3,6 +3,14 @@ import { attractions } from '@/constants/constants';
 import { User } from '@/types/User/type';
 
 export const TRIP_REF = '6SMFOA';
+export const GUEST: User = {
+  id: 'Guest',
+  name: 'Guest',
+  inOutScore: 3,
+  leisureThrillScore: 3,
+  cheapExpScore: 3,
+};
+
 export const users: User[] = [
   {
     id: '2',
