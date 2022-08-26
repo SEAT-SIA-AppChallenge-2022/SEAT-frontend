@@ -1,10 +1,10 @@
 const Routes = {
   base: '/',
+  start: '/start',
   addOns: '/addOns',
   overview: '/overview',
   purchase: '/purchase',
   review: '/review',
-  test: '/test',
 };
 
 export default Routes;

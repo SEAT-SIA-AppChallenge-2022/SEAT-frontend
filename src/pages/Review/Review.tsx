@@ -26,7 +26,7 @@ const Review = () => {
 
   useEffect(() => {
     if (chosenAttractions.length === 0) {
-      history.push(Routes.addOns);
+      history.push(Routes.start);
     }
   }, []);
 
