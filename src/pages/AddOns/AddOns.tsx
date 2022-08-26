@@ -8,7 +8,16 @@ import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
 import Loading from '@components/Loading';
 
-import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
+import { useApi } from '@/api/ApiHandler';
+import RecommendationService from '@/api/recommendation/RecommendationService';
+
+import {
+  getAllAttractions,
+  setAllAttractions,
+  getChosenAttractions,
+  setRecommendedAttractions,
+  getRecommendedAttractions,
+} from '@/store/attractions/attractionSlice';
 import { dummyAttractions, TRIP_REF } from '@/constants/dummyData';
 import Routes from '@/utilities/routes';
 import { navigationStates, attractions, attractionTypes } from '@/constants/constants';
@@ -22,18 +31,35 @@ import { useHistory } from 'react-router';
 const AddOns: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const currentUser = useSelector(getCurrentUser);
+
+  useEffect(() => {
+    if (!currentUser) history.push(Routes.start);
+    dispatch(setAllAttractions(dummyAttractions));
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const [getRecommendation] = useApi(() => RecommendationService.getRecommendation(currentUser!));
 
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
 
   const allAttractions = useSelector(getAllAttractions);
   const chosenAttractions = useSelector(getChosenAttractions);
+  const recommendedAttractions = useSelector(getRecommendedAttractions);
 
-  const currentUser = useSelector(getCurrentUser);
+  const getData = async () => {
+    const req = await getRecommendation();
+    if (!req.isSuccess) return;
+    const recommendations = req.attractions.map(id => parseInt(id));
+    const newRecommendedAttractions = allAttractions?.filter(attraction => recommendations.includes(attraction.id));
+
+    dispatch(setRecommendedAttractions(newRecommendedAttractions ?? []));
+  };
+
   useEffect(() => {
-    if (!currentUser) history.push(Routes.start);
-    dispatch(setAllAttractions(dummyAttractions));
-  });
+    getData();
+  }, []);
 
   return (
     <>
@@ -57,8 +83,8 @@ const AddOns: React.FC = () => {
                   ))}
               </OptionsDropdown>
             </div>
-            {allAttractions &&
-              allAttractions
+            {recommendedAttractions &&
+              recommendedAttractions
                 .filter(attraction => (selected.option !== attractions.all ? attraction.category === selected.option : true))
                 .map(attraction => (
                   <AttractionCard
