@@ -5,7 +5,7 @@ import PreferenceMeter from '@components/PreferenceMeter';
 import LabelTitle from '@components/LabelTitle';
 import Button from '@components/Button';
 
-import Routes from '@/utilities/routes';
+// import Routes from '@/utilities/routes';
 import { TRIP_REF } from '@/constants/dummyData';
 
 const Start = () => {
@@ -20,13 +20,13 @@ const Start = () => {
 
           <div className='grid grid-cols-1 w-full justify-items-center mt-10 space-y-2.5 px-5'>
             <LabelTitle className='w-full' title='Outdoors vs Indoors' />
-            <PreferenceMeter name='OutdoorVsIndoor' />
+            <PreferenceMeter onChange={id => id} name='OutdoorVsIndoor' />
 
             <LabelTitle className='w-full' title='Leisure vs Thrill' />
-            <PreferenceMeter name='LeisureVsThrill' />
+            <PreferenceMeter onChange={id => id} name='LeisureVsThrill' />
 
             <LabelTitle className='w-full' title='Affordable vs Luxury' />
-            <PreferenceMeter name='AffordableVsLuxury' />
+            <PreferenceMeter onChange={id => id} name='AffordableVsLuxury' />
           </div>
 
           <div className='w-full flex justify-end'>
