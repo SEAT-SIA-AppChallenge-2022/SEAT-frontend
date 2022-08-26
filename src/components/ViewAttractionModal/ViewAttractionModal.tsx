@@ -50,53 +50,58 @@ const ViewAttractionModal = () => {
 
   return isOpen ? (
     <div className={`absolute flex justify-center items-center overflow-y-auto z-40 w-screen h-screen bg-[#000000b3]`}>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <IonCard className='relative z-50 h-[590px] overflow-y-hidden'>
-          <img className='object-cover w-full h-44' src={imgUrl} />
+      <IonCard className='relative z-50 h-[590px] overflow-y-hidden'>
+        <img className='object-cover w-full h-44' src={imgUrl} />
 
-          {/* Checkmark */}
-          {isAttractionChosen && (
-            <IonIcon className='absolute top-0 left-0 mt-1.5 ml-1.5 py-0.5 text-3xl text-[#4BB543]' icon={checkmarkCircle} />
-          )}
+        {/* Checkmark */}
+        {isAttractionChosen && (
+          <IonIcon className='absolute top-0 left-0 mt-1.5 ml-1.5 py-0.5 text-3xl text-[#4BB543]' icon={checkmarkCircle} />
+        )}
 
-          {/* Rating */}
-          <div className='rounded-lg absolute flex top-0 right-0 mt-2 mr-2 py-0.5 pl-2 pr-1 bg-[#ffffffbf]'>
-            <p className='text-black mt-0.5 text-xl'>{rating}</p>
-            <IonIcon className='text-3xl' icon={starIcon} />
+        {/* Rating */}
+        <div className='rounded-lg absolute flex top-0 right-0 mt-2 mr-2 py-0.5 pl-2 pr-1 bg-[#ffffffbf]'>
+          <p className='text-black mt-0.5 text-xl'>{rating}</p>
+          <IonIcon className='text-3xl' icon={starIcon} />
+        </div>
+
+        <IonCardHeader>
+          <IonCardSubtitle mode='ios'>{category}</IonCardSubtitle>
+          {price && <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>}
+          <IonCardTitle mode='ios'>{title}</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent className='text-justify h-32 overflow-y-scroll' mode='ios'>
+          {description}
+        </IonCardContent>
+        <div className='absolute w-full p-5 bottom-0'>
+          <div className='flex w-full justify-end'>
+            <DateTimePicker
+              value={
+                chosenAttraction
+                  ? chosenAttraction.chosenDate.toTimezoneDate(timezones.sg).format()
+                  : chosenDate.toTimezoneDate(timezones.sg).format()
+              }
+              onChange={handleDateChange}
+              disabled={isAttractionChosen}
+            />
           </div>
-
-          <IonCardHeader>
-            <IonCardSubtitle mode='ios'>{category}</IonCardSubtitle>
-            {price && <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>}
-            <IonCardTitle mode='ios'>{title}</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent className='text-justify h-32 overflow-y-scroll' mode='ios'>
-            {description}
-          </IonCardContent>
-          <div className='absolute w-full p-5 bottom-0'>
-            <div className='flex w-full justify-end'>
-              <DateTimePicker
-                value={
-                  chosenAttraction
-                    ? chosenAttraction.chosenDate.toTimezoneDate(timezones.sg).format()
-                    : chosenDate.toTimezoneDate(timezones.sg).format()
-                }
-                onChange={handleDateChange}
-                disabled={isAttractionChosen}
-              />
+          <div className='grid grid-cols-2 w-full'>
+            <div className='w-full flex justify-start'>
+              <Button className='w-24' onClick={handleClickAway}>
+                Close
+              </Button>
             </div>
-            <div className='flex w-full justify-end'>
+            <div className='w-full flex justify-end'>
               <Button
                 color={isAttractionChosen ? 'danger' : 'primary'}
                 onClick={isAttractionChosen ? handleRemove : handleAddClick}
-                className='w-32'
+                className='w-24'
               >
                 {isAttractionChosen ? 'Remove' : 'Add'}
               </Button>
             </div>
           </div>
-        </IonCard>
-      </ClickAwayListener>
+        </div>
+      </IonCard>
     </div>
   ) : (
     <></>
