@@ -13,6 +13,7 @@ import { dummyAttractions, TRIP_REF } from '@/constants/dummyData';
 import Routes from '@/utilities/routes';
 import { navigationStates, attractions, attractionTypes } from '@/constants/constants';
 import { AttractionOption } from '@/types/attractions/attractions';
+import { getCurrentUser } from '@/store/authentication/authSlice';
 
 import { IonFooter } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,7 +29,9 @@ const AddOns: React.FC = () => {
   const allAttractions = useSelector(getAllAttractions);
   const chosenAttractions = useSelector(getChosenAttractions);
 
+  const currentUser = useSelector(getCurrentUser);
   useEffect(() => {
+    if (!currentUser) history.push(Routes.start);
     dispatch(setAllAttractions(dummyAttractions));
   });
 
