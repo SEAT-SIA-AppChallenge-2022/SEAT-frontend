@@ -4,12 +4,14 @@ import { Attraction, ChosenAttraction } from '@/types/attractions/attractions';
 
 interface AttractionState {
   allAttractions: Attraction[];
+  recommendedAttractions: Attraction[];
   chosenAttractions: ChosenAttraction[];
   currentAttractionView: number | undefined;
 }
 
 const initialState: AttractionState = {
   allAttractions: [],
+  recommendedAttractions: [],
   chosenAttractions: [],
   currentAttractionView: undefined,
 };
@@ -20,6 +22,9 @@ export const attractionSlice = createSlice({
   initialState,
   reducers: {
     setAllAttractions: (state, action: PayloadAction<Attraction[]>) => {
+      state.allAttractions = action.payload;
+    },
+    setRecommendedAttractions: (state, action: PayloadAction<Attraction[]>) => {
       state.allAttractions = action.payload;
     },
     addAttraction: (state, action: PayloadAction<ChosenAttraction>) => {
@@ -38,10 +43,15 @@ export const attractionSlice = createSlice({
   },
 });
 
-export const { setAllAttractions, setCurrentAttractionView, addAttraction, deleteAttraction } = attractionSlice.actions;
+export const { setAllAttractions, setCurrentAttractionView, addAttraction, deleteAttraction, setRecommendedAttractions } =
+  attractionSlice.actions;
 
 export const getAllAttractions = (state: RootState): Attraction[] | null => {
   return state.attraction.allAttractions;
+};
+
+export const getRecommendedAttractions = (state: RootState): Attraction[] | null => {
+  return state.attraction.recommendedAttractions;
 };
 
 export const getChosenAttractions = (state: RootState): ChosenAttraction[] | null => {

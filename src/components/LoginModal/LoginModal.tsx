@@ -3,13 +3,21 @@ import React from 'react';
 import OptionsDropdown from '@components/OptionsDropdown';
 import Option from '@components/OptionsDropdown/Option';
 
+import { getIsLoginModalOpen, hideLoginModal } from '@/store/ui/uiSlice';
+
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
 import ClickAwayListener from 'react-click-away-listener';
+import { useSelector, useDispatch } from 'react-redux';
 
 const LoginModal = () => {
-  return (
+  const dispatch = useDispatch();
+  const isOpen = useSelector(getIsLoginModalOpen);
+  const handleClickAway = () => {
+    dispatch(hideLoginModal());
+  };
+  return isOpen ? (
     <div className={`absolute flex justify-center items-center overflow-y-auto z-40 w-screen h-screen bg-[#000000b3]`}>
-      <ClickAwayListener onClickAway={() => ''}>
+      <ClickAwayListener onClickAway={handleClickAway}>
         <IonCard className='w-full relative z-50 overflow-y-hidden px-5 py-4'>
           <IonCardHeader>
             <IonCardTitle>
@@ -28,6 +36,7 @@ const LoginModal = () => {
               </label>
               <div className='mt-1'>
                 <input
+                  readOnly
                   id='email'
                   name='email'
                   type='email'
@@ -44,6 +53,7 @@ const LoginModal = () => {
               </label>
               <div className='mt-1'>
                 <input
+                  readOnly
                   id='password'
                   name='password'
                   type='password'
@@ -57,6 +67,7 @@ const LoginModal = () => {
             <div className='flex items-center justify-between mb-5'>
               <div className='flex items-center'>
                 <input
+                  checked
                   id='remember-me'
                   name='remember-me'
                   type='checkbox'
@@ -89,6 +100,8 @@ const LoginModal = () => {
         </IonCard>
       </ClickAwayListener>
     </div>
+  ) : (
+    <></>
   );
 };
 
