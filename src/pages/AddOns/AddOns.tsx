@@ -43,18 +43,21 @@ const AddOns: React.FC = () => {
 
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const allAttractions = useSelector(getAllAttractions);
   const chosenAttractions = useSelector(getChosenAttractions);
   const recommendedAttractions = useSelector(getRecommendedAttractions);
 
   const getData = async () => {
+    setIsLoading(true);
     const req = await getRecommendation();
     if (!req.isSuccess) return;
     const recommendations = req.attractions.map(id => parseInt(id));
     const newRecommendedAttractions = allAttractions?.filter(attraction => recommendations.includes(attraction.id));
 
     dispatch(setRecommendedAttractions(newRecommendedAttractions ?? []));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -64,7 +67,7 @@ const AddOns: React.FC = () => {
   return (
     <>
       <PageWithHeader>
-        <Loading isLoading={false} loadingMessage='Personalising...' />
+        <Loading isLoading={isLoading} loadingMessage='Personalising...' />
         <TopNavigationBar state={navigationStates.pickAttractions} />
         <div className='grid grid-cols-1 h-full w-screen'>
           <div className='z-20'>

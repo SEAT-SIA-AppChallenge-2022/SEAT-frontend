@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
 import BackButton from '@/components/BackButton';
 import TopNavigationBar from '@components/TopNavigationBar';
 import Button from '@components/Button';
 import PaymentInput from '@components/PaymentInput';
+import Loading from '@components/Loading';
 
 import Routes from '@/utilities/routes';
 import { TRIP_REF } from '@/constants/dummyData';
@@ -17,11 +18,22 @@ import { useSelector } from 'react-redux';
 
 const Purchase = () => {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const chosenAttractions = useSelector(getChosenAttractions) ?? [];
   const totalPrice = (400 + chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0)).toFixed(2);
 
+  const handlePurchase = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      history.push(Routes.review);
+    }, 2500);
+  };
+
   return (
     <PageWithHeader>
+      <Loading isLoading={isLoading} loadingMessage='Processing...' />
       <TopNavigationBar state={navigationStates.completePayment} />
       <div className='grid grid-cols-1 h-full w-screen'>
         <div className='z-20'>
@@ -47,7 +59,7 @@ const Purchase = () => {
         </div>
       </div>
       <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
-        <Button onClick={() => history.push(Routes.review)} className='w-full'>
+        <Button onClick={handlePurchase} className='w-full'>
           Purchase
         </Button>
       </IonFooter>
