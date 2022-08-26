@@ -19,7 +19,7 @@ const PreferenceMeter = ({ name, onChange }: Props) => {
               type='radio'
               onClick={() => onChange(preference.id)}
               defaultChecked={preference.id === 3}
-              className='focus:ring-[#1F201E] h-4 w-4 text-[#1F201E] border-gray-300'
+              className='focus:ring-[#1F201E] h-6 w-6 text-[#1F201E] border-gray-300'
             />
           </div>
         ))}
