@@ -3,6 +3,8 @@ import React from 'react';
 import DateTime from '@/types/DateTime/DateTime';
 import { timezones } from '@/constants/constants';
 import { deleteAttraction } from '@/store/attractions/attractionSlice';
+import { showAttractionModal } from '@/store/ui/uiSlice';
+import { setCurrentAttractionView } from '@/store/attractions/attractionSlice';
 
 import { IonCardSubtitle, IonCardTitle, IonIcon } from '@ionic/react';
 import { trash, airplane } from 'ionicons/icons';
@@ -24,9 +26,14 @@ const AttractionCardChip = ({ isFlight, date, title, price, id, isReview = false
     dispatch(deleteAttraction(id));
   };
 
+  const handleChipClick = () => {
+    dispatch(setCurrentAttractionView(id));
+    dispatch(showAttractionModal());
+  };
+
   return (
     <div className='grid grid-cols-5 bg-grey w-full rounded-lg mb-3'>
-      <div className='col-span-4 p-2'>
+      <div onClick={handleChipClick} className='col-span-4 p-2'>
         <IonCardTitle mode='ios' className='text-xl'>
           {isFlight ? 'Flight' : title}
         </IonCardTitle>
