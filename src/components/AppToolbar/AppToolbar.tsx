@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton } from '@ionic/react';
+import { IonHeader, IonToolbar } from '@ionic/react';
 import ScootLogo from '@components/ScootLogo';
 
 const AppToolbar = () => {
