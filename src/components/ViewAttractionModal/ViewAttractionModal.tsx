@@ -51,7 +51,7 @@ const ViewAttractionModal = () => {
   return isOpen ? (
     <div className={`absolute flex justify-center items-center overflow-y-auto z-40 w-screen h-screen bg-[#000000b3]`}>
       <ClickAwayListener onClickAway={handleClickAway}>
-        <IonCard className='relative z-50 h-[550px] overflow-y-hidden'>
+        <IonCard className='relative z-50 h-[590px] overflow-y-hidden'>
           <img className='object-cover w-full h-44' src={imgUrl} />
 
           {/* Checkmark */}
@@ -70,10 +70,10 @@ const ViewAttractionModal = () => {
             {price && <IonCardSubtitle mode='ios'>Starts from SGD {price}</IonCardSubtitle>}
             <IonCardTitle mode='ios'>{title}</IonCardTitle>
           </IonCardHeader>
-          <IonCardContent className='text-justify h-40 overflow-y-scroll' mode='ios'>
+          <IonCardContent className='text-justify h-32 overflow-y-scroll' mode='ios'>
             {description}
           </IonCardContent>
-          <div className='w-full p-5'>
+          <div className='absolute w-full p-5 bottom-0'>
             <div className='flex w-full justify-end'>
               <DateTimePicker
                 value={
