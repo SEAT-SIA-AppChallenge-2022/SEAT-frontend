@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon } from '@ionic/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DatetimeChangeEventDetail, IonDatetimeCustomEvent } from '@ionic/core';
-import ClickAwayListener from 'react-click-away-listener';
 import { checkmarkCircle } from 'ionicons/icons';
 
 import Button from '@components/Button';
