@@ -7,9 +7,6 @@ const AppToolbar = () => {
     <IonHeader>
       <IonToolbar color='primary' mode='ios' className='h-16 flex'>
         <ScootLogo className='ml-5' />
-        <IonButtons slot='end'>
-          <IonMenuButton className='mr-3' auto-hide='false' />
-        </IonButtons>
       </IonToolbar>
     </IonHeader>
   );
