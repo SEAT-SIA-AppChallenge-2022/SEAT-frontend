@@ -43,6 +43,7 @@ const Start = () => {
           </div>
 
           <div className='grid grid-cols-1 w-full justify-items-center mt-10 space-y-2.5 px-5'>
+            <h1 className='font-bold text-xl'>What kind of traveller are you?</h1>
             <LabelTitle className='w-full' title='Outdoors vs Indoors' />
             <PreferenceMeter onChange={id => handleOutdoorIndoorChange(id)} name='OutdoorVsIndoor' />
 
