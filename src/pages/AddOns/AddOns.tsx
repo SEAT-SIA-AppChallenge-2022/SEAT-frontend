@@ -6,6 +6,8 @@ import TopNavigationBar from '@components/TopNavigationBar';
 import AttractionCard from '@components/AttractionCard';
 import Option from '@components/OptionsDropdown/Option';
 import Button from '@components/Button';
+import Loading from '@components/Loading';
+
 import { getAllAttractions, setAllAttractions, getChosenAttractions } from '@/store/attractions/attractionSlice';
 import { dummyAttractions, TRIP_REF } from '@/constants/dummyData';
 import Routes from '@/utilities/routes';
@@ -22,6 +24,7 @@ const AddOns: React.FC = () => {
 
   const [attractionOptions] = useState<AttractionOption[]>(attractionTypes);
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
+
   const allAttractions = useSelector(getAllAttractions);
   const chosenAttractions = useSelector(getChosenAttractions);
 
@@ -32,6 +35,7 @@ const AddOns: React.FC = () => {
   return (
     <>
       <PageWithHeader>
+        <Loading isLoading={false} loadingMessage='Personalising...' />
         <TopNavigationBar state={navigationStates.pickAttractions} />
         <div className='grid grid-cols-1 h-full w-screen'>
           <div className='z-20'>
