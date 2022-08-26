@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PageWithHeader from '@components/PageWithHeader';
 import PreferenceMeter from '@components/PreferenceMeter';
@@ -12,6 +12,27 @@ import { useHistory } from 'react-router';
 
 const Start = () => {
   const history = useHistory();
+  const [outdoorIndoorScore, setOutdoorIndoorScore] = useState<number>(3);
+  const [leisureThrillScore, setLeisureThrillScore] = useState<number>(3);
+  const [affordableLuxuryScore, setAffordableLuxuryScore] = useState<number>(3);
+
+  const handleOutdoorIndoorChange = (id: number) => {
+    setOutdoorIndoorScore(id);
+  };
+  const handleLeisureThrillChange = (id: number) => {
+    setLeisureThrillScore(id);
+  };
+  const handleAffordableLuxuryChange = (id: number) => {
+    setAffordableLuxuryScore(id);
+  };
+
+  const handlePersonalise = () => {
+    console.log(outdoorIndoorScore);
+    console.log(leisureThrillScore);
+    console.log(affordableLuxuryScore);
+    history.push(Routes.addOns);
+  };
+
   return (
     <PageWithHeader>
       <div className='grid grid-cols-1 h-full w-screen'>
@@ -23,17 +44,17 @@ const Start = () => {
 
           <div className='grid grid-cols-1 w-full justify-items-center mt-10 space-y-2.5 px-5'>
             <LabelTitle className='w-full' title='Outdoors vs Indoors' />
-            <PreferenceMeter onChange={id => id} name='OutdoorVsIndoor' />
+            <PreferenceMeter onChange={id => handleOutdoorIndoorChange(id)} name='OutdoorVsIndoor' />
 
             <LabelTitle className='w-full' title='Leisure vs Thrill' />
-            <PreferenceMeter onChange={id => id} name='LeisureVsThrill' />
+            <PreferenceMeter onChange={id => handleLeisureThrillChange(id)} name='LeisureVsThrill' />
 
             <LabelTitle className='w-full' title='Affordable vs Luxury' />
-            <PreferenceMeter onChange={id => id} name='AffordableVsLuxury' />
+            <PreferenceMeter onChange={id => handleAffordableLuxuryChange(id)} name='AffordableVsLuxury' />
           </div>
 
           <div className='w-full flex justify-end'>
-            <Button onClick={() => history.push(Routes.addOns)} className='w-32 mr-5'>
+            <Button onClick={() => handlePersonalise()} className='w-32 mr-5'>
               Personalise
             </Button>
           </div>
