@@ -12,7 +12,6 @@ import { useApi } from '@/api/ApiHandler';
 import RecommendationService from '@/api/recommendation/RecommendationService';
 
 import {
-  getAllAttractions,
   setAllAttractions,
   getChosenAttractions,
   setRecommendedAttractions,
