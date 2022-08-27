@@ -7,6 +7,7 @@ interface AttractionState {
   recommendedAttractions: Attraction[];
   chosenAttractions: ChosenAttraction[];
   currentAttractionView: number | undefined;
+  isPurchased: boolean;
 }
 
 const initialState: AttractionState = {
@@ -14,6 +15,7 @@ const initialState: AttractionState = {
   recommendedAttractions: [],
   chosenAttractions: [],
   currentAttractionView: undefined,
+  isPurchased: false,
 };
 
 export const attractionSlice = createSlice({
@@ -21,6 +23,9 @@ export const attractionSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
+    setPurchased: state => {
+      state.isPurchased = true;
+    },
     setAllAttractions: (state, action: PayloadAction<Attraction[]>) => {
       state.allAttractions = action.payload;
     },
@@ -43,7 +48,7 @@ export const attractionSlice = createSlice({
   },
 });
 
-export const { setAllAttractions, setCurrentAttractionView, addAttraction, deleteAttraction, setRecommendedAttractions } =
+export const { setAllAttractions, setCurrentAttractionView, addAttraction, deleteAttraction, setRecommendedAttractions, setPurchased } =
   attractionSlice.actions;
 
 export const getAllAttractions = (state: RootState): Attraction[] | null => {
@@ -62,6 +67,10 @@ export const getCurrentAttractionView = (state: RootState): Attraction | undefin
   const id = state.attraction.currentAttractionView;
   if (!id) return undefined;
   return state.attraction.allAttractions.find(attraction => attraction.id === id);
+};
+
+export const getIsPurchased = (state: RootState): boolean => {
+  return state.attraction.isPurchased;
 };
 
 export default attractionSlice.reducer;

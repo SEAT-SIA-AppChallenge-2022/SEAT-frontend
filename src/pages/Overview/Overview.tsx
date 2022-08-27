@@ -89,7 +89,7 @@ const Overview = () => {
 
       <IonFooter className='px-4 flex items-center z-40 fixed bottom-0 h-24 bg-transparentGrey'>
         <Button disabled={chosenAttractions.length === 0} onClick={() => history.push(Routes.purchase)} className='w-full'>
-          Purchase
+          Checkout
         </Button>
       </IonFooter>
     </PageWithHeader>

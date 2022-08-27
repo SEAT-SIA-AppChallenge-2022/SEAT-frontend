@@ -11,13 +11,16 @@ import Routes from '@/utilities/routes';
 import { TRIP_REF } from '@/constants/dummyData';
 import { navigationStates } from '@/constants/constants';
 import { getChosenAttractions } from '@/store/attractions/attractionSlice';
+import { setPurchased } from '@/store/attractions/attractionSlice';
 
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonFooter, IonCardContent } from '@ionic/react';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Purchase = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const chosenAttractions = useSelector(getChosenAttractions) ?? [];
@@ -25,6 +28,7 @@ const Purchase = () => {
 
   const handlePurchase = () => {
     setIsLoading(true);
+    dispatch(setPurchased());
     setTimeout(() => {
       setIsLoading(false);
       history.push(Routes.review);

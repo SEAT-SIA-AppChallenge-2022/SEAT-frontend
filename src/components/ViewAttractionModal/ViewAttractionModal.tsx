@@ -8,7 +8,13 @@ import { checkmarkCircle } from 'ionicons/icons';
 import Button from '@components/Button';
 import DateTimePicker from '@components/DateTimePicker';
 import { hideAttractionModal, getIsAttractionModalOpen } from '@/store/ui/uiSlice';
-import { getCurrentAttractionView, addAttraction, getChosenAttractions, deleteAttraction } from '@/store/attractions/attractionSlice';
+import {
+  getCurrentAttractionView,
+  addAttraction,
+  getChosenAttractions,
+  deleteAttraction,
+  getIsPurchased,
+} from '@/store/attractions/attractionSlice';
 import { TRIP_REF } from '@/constants/dummyData';
 import { ChosenAttraction } from '@/types/attractions/attractions';
 import DateTime from '@/types/DateTime/DateTime';
@@ -20,6 +26,7 @@ const ViewAttractionModal = () => {
   const isOpen = useSelector(getIsAttractionModalOpen);
   const currentAttraction = useSelector(getCurrentAttractionView);
   const chosenAttractions = useSelector(getChosenAttractions);
+  const isPurchased = useSelector(getIsPurchased);
 
   const [chosenDate, setChosenDate] = useState<DateTime>(DateTime.newDateTimeFromDate(new Date()));
 
@@ -91,6 +98,7 @@ const ViewAttractionModal = () => {
             </div>
             <div className='w-full flex justify-end'>
               <Button
+                disabled={isPurchased}
                 color={isAttractionChosen ? 'danger' : 'primary'}
                 onClick={isAttractionChosen ? handleRemove : handleAddClick}
                 className='w-24'
