@@ -24,7 +24,7 @@ export const users: User[] = [
   {
     id: '72',
     name: 'Luxurious & Outdoorsy User',
-    inOutScore: 1,
+    inOutScore: 5,
     leisureThrillScore: 3,
     cheapExpScore: 5,
     email: 'LuxuriousOutdoor@gmail.com',

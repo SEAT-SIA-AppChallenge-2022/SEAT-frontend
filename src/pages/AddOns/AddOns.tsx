@@ -45,7 +45,6 @@ const AddOns: React.FC = () => {
   const [selected, setSelected] = useState<AttractionOption>(attractionOptions[0]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const allAttractions = useSelector(getAllAttractions);
   const chosenAttractions = useSelector(getChosenAttractions);
   const recommendedAttractions = useSelector(getRecommendedAttractions);
 
@@ -54,9 +53,9 @@ const AddOns: React.FC = () => {
     const req = await getRecommendation();
     if (!req.isSuccess) return;
     const recommendations = req.attractions.map(id => parseInt(id));
-    const newRecommendedAttractions = allAttractions?.filter(attraction => recommendations.includes(attraction.id));
+    const newRecommendedAttractions = dummyAttractions.filter(attraction => recommendations.includes(attraction.id));
 
-    dispatch(setRecommendedAttractions(newRecommendedAttractions ?? []));
+    dispatch(setRecommendedAttractions(newRecommendedAttractions));
     setIsLoading(false);
   };
 

@@ -25,7 +25,7 @@ export const attractionSlice = createSlice({
       state.allAttractions = action.payload;
     },
     setRecommendedAttractions: (state, action: PayloadAction<Attraction[]>) => {
-      state.allAttractions = action.payload;
+      state.recommendedAttractions = action.payload;
     },
     addAttraction: (state, action: PayloadAction<ChosenAttraction>) => {
       const exists = state.chosenAttractions.find(
