@@ -24,7 +24,7 @@ const Purchase = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const chosenAttractions = useSelector(getChosenAttractions) ?? [];
-  const totalPrice = (400 + chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0)).toFixed(2);
+  const totalPrice = chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0).toFixed(2);
 
   const handlePurchase = () => {
     setIsLoading(true);

@@ -24,7 +24,7 @@ const Overview = () => {
   const chosenAttractions = useSelector(getChosenAttractions) ?? [];
   const chosenAttractionsCopy = [...chosenAttractions];
   chosenAttractionsCopy.sort((x, y) => new Date(x.chosenDate.toString()).getTime() - new Date(y.chosenDate.toString()).getTime());
-  const totalPrice = (400 + chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0)).toFixed(2);
+  const totalPrice = chosenAttractions?.reduce((x, y) => x + parseFloat(y.price ?? '0'), 0).toFixed(2);
 
   const flightDayDate = (): DateTime => {
     if (chosenAttractionsCopy.length === 0) return DateTime.newDateTimeFromDate(new Date());
