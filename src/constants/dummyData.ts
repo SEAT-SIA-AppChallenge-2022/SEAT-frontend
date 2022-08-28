@@ -63,7 +63,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 1,
     category: attractions.tours,
-    rating: 1.5,
+    rating: 3.5,
     description:
       'A new pandemic is spreading quickly, sweeping the world with a high mortality rate. Scientists term this deadly plague "Green Death-29". Now, almost all on the main island are infected. Sentosa and St John`s Island are one of the few areas the virus has not yet ravaged.',
     imgUrl:
@@ -99,7 +99,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 4,
     category: attractions.dining,
-    rating: 1.7,
+    rating: 3.7,
     description:
       'Join us on this fascinating craft beer tour where you will discover how RedDot BrewHouse perfected their craft for over a decade while witnessing firsthand the brewing tanks and equipment specially designed by us and sample our new seasonal beers paired with scrumptious food.',
     imgUrl:
@@ -111,7 +111,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 5,
     category: attractions.tours,
-    rating: 1.7,
+    rating: 3.7,
     description:
       "What's better than exploring Singapore on foot? Zipping past city streets in a Vespa sidecar, that's for sure. With this tour, breeze through heritage areas like Kampong Glam, Little India, and Chinatown. Admire the slick Singapore skyline, crowned by the iconic Marina Bay Sands hotel, as well as check out classical colonial Victorian buildings of the Civic District, and Bras Basah.",
     imgUrl:
@@ -135,7 +135,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 7,
     category: attractions.dining,
-    rating: 2.1,
+    rating: 4.1,
     description:
       'Travel the world on your palate. Relish.SG presents a feast for globetrotting gourmands. Enjoy exotic flavours and textures in the comfort of Singapore home. From Bombay to Madrid, enjoy a culinary journey through unique and delicious interpretation of classic dishes.',
     imgUrl: 'https://www.pelago.co/img/products/SG-Singapore/ph1234567/0413-0222_spelago2',
@@ -158,7 +158,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 9,
     category: attractions.dining,
-    rating: 1.4,
+    rating: 3.4,
     description:
       "Put the woke in \"woke hei\" at HolyCrab, a forerunner of Singapore's private dining scene where diners used to fill their bellies in Chef Elton's humble abode. Now a large industrial kitchen, enjoy a small group hands-on experience outta-the-ol'-home.",
     imgUrl:
@@ -170,7 +170,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 10,
     category: attractions.tours,
-    rating: 2.4,
+    rating: 4.4,
     description:
       "Think you've seen (and know) all of Singapore? Think again. Go on this four-hour bicycle tour to visit iconic attractions and venues like Merlion Park, Haji Lane, the F1 Race Track, and Chinatown, but get ready to learn way more than what you've read online",
     imgUrl:
@@ -182,7 +182,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 11,
     category: attractions.tours,
-    rating: 1.6,
+    rating: 3.6,
     description:
       "Explore the lesser known sights of Seletar, from its black and white colonial houses which housed Royal Air Force personnel, to Singapore's first wetlands sanctuary in an industrial park. Hunt down retired colonial steel and goose-necked lamp posts, and gawk at sheltered walkways that resemble wings of aircraft.",
     imgUrl:
@@ -229,7 +229,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 15,
     category: attractions.tours,
-    rating: 1.8,
+    rating: 3.8,
     description:
       'Feel the pulse of the city on this popular Singapore city highlights tour. Stroll along the scenic Singapore River and admire old colonial architecture. Marvel at the contrast between old shophouses and gleaming skyscrapers. Listen to inspiring stories of the local people.',
     imgUrl:
@@ -252,7 +252,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 17,
     category: attractions.dining,
-    rating: 2.8,
+    rating: 4.8,
     description:
       "From wet market to gin bottle, join the Tanglin team as they take you on a journey through Singapore's original gin distillery, where you can taste locally sourced ingredients, as well as learn the processes of distillation, from mixing to bottling. After the tour, savour four different Tanglin Gin expressions, followed by a bespoke gin and tonic cocktail.",
     imgUrl: 'https://www.pelago.co/img/products/SG-Singapore/tanglin-gin-distillery-tour/1201-0524_tanglin-gin-1-large.webp',
@@ -275,7 +275,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 19,
     category: attractions.dining,
-    rating: 1.8,
+    rating: 3.8,
     description:
       'Embark on a captivating Singa-pour gin journey with Brass Lion as gin enthusiasts take you on a guided tasting of a flight of 6 uniquely Brass Lion gins. Discover what goes into the gin making process and the inspiration behind them, which will change your ways of appreciating gin.',
     imgUrl:
@@ -287,7 +287,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 20,
     category: attractions.tours,
-    rating: 2.1,
+    rating: 4.1,
     description:
       "Hop on a bicycle and pedal down the Marina Bay district on a beautiful sunset journey with trained guides. Traverse through towering skyscrapers, weave your way through ultra-futuristic buildings, lap up all the sights and sounds, and discover stories about how Marina Bay came to be Singapore's glitziest hood.",
     imgUrl:
@@ -299,7 +299,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 21,
     category: attractions.tours,
-    rating: 2.1,
+    rating: 4.1,
     description:
       'Do you have what it takes to tackle The Jewel Heist? Set in the iconic Jewel Changi Airport, play this thrilling heist in teams of four to six. Participants will work as a team through missions set forth by the leader of the activity - your guide and gamemaster.',
     imgUrl:
@@ -404,7 +404,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 30,
     category: attractions.tours,
-    rating: 2.6,
+    rating: 4.6,
     description:
       "Discover the sights and sounds of Singapore. Explore the city's most iconic landmarks from the comfort of your seat on board an open-top, double-decker bus. Enjoy a tour aboard the Big Bus, your one-stop-shop vehicle for checking out the best that Singapore has to offer.",
     imgUrl:
@@ -416,7 +416,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 31,
     category: attractions.tours,
-    rating: 2.9,
+    rating: 4.9,
     description:
       'The Chinese Singaporean identity today is a result of generations of intercultural influences. Through a walking trail of buildings, arts and food, embark on a journey of discovery.',
     imgUrl: 'https://www.pelago.co/img/products/SG-Singapore/inside/0530-0746_0-large.webp',
@@ -484,7 +484,7 @@ export const dummyAttractions: Attraction[] = [
   {
     id: 37,
     category: attractions.dining,
-    rating: 1.4,
+    rating: 3.4,
     description:
       'Do you know that Koi means "How Are You"? Check out the signature drinks from this Singapore homegrown Bubble Tea Chain well-loved by both locals and travellers.',
     imgUrl: 'https://ntucclubdtecdn.azureedge.net/assets/images/default-source/shop-gallery-/golden-bubble-milk-tea.jpeg?sfvrsn=bda68973_0',
